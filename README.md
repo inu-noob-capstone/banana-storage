@@ -15,5 +15,7 @@ Yoon Jong Hwa, 윤종화 : whdghk2gh@naver.com
 
 Li Lim, 이림 : 836176537@qq.com
 
+Choi Jae won, 최재원 : didltidsjadk@naver.com
+
 This is storage for the project. And We call this project as Capstone Design. I hope some Code Monkeys will be here for some banana, and help us.
 
