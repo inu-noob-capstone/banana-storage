@@ -1,6 +1,12 @@
 import socket
 import CustomException
 
+
+# "from FindBridge import *" 로 모듈을 읽어 들일 때 가져올 모듈
+__all__ = ["FindBridgeInfo"]
+
+print("FindBridgeInfo package를 읽어들였습니다.")
+
 msg = \
     'M-SEARCH * HTTP/1.1\n' \
     'HOST:239.255.255.250.:1900\n' \
@@ -21,7 +27,6 @@ try:
 
         data = data.replace('\r','')
         data = data.rstrip('\n')
-        #print(data)
 
         #if find Brdige, then save it's info
         if data.find('IpBridge') != -1:
@@ -39,3 +44,4 @@ try:
         
 except socket.timeout:
     pass
+
