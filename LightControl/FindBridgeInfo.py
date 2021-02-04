@@ -9,8 +9,6 @@ msg = \
     'MAN:"ssdp:discover"\n' \
     '\n'
 
-print(msg)
-
 #Set up UDP socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 s.settimeout(2)
@@ -20,20 +18,22 @@ try:
     while True:
         data, addr = s.recvfrom(65507)
         data = data.decode('ascii')
-        print(addr)
-        #print(data)
 
         data = data.replace('\r','')
         data = data.rstrip('\n')
-        print(data)
+        #print(data)
 
         #if find Brdige, then save it's info
         if data.find('IpBridge') != -1:
             print('\nIpBridge 찾음\n')
             BridgeInfo = data
             BridgeInfo = BridgeInfo.split('\n')
-            print(BridgeInfo)
+            ip = BridgeInfo[4]
+            ip = ip[17:]
+            ip = ip[:ip.find(':')]
+            print("Bridge IP Address :",ip)
             print()
+            break
         else:
             raise CustomException.CannotFindBridge
         
