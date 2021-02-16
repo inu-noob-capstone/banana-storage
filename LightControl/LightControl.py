@@ -21,10 +21,15 @@ class LightControl:
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         payload = '{"on":true}'
         r = requests.put(URL, data=payload)
-        print('lightOff 결과 :',r.text)
+        print('lightOn 결과 :',r.text)
         return r.text
         
-        
+    def changeXY(x, y):
+        URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
+        payload = '{"xy":['+x+','+y+']}'
+        r = requests.put(URL, data=payload)
+        print('changeXYf 결과 :',r.text)
+        return r.text        
 
     
 

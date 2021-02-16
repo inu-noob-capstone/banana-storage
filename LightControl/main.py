@@ -27,3 +27,8 @@ time.sleep(5)
 
 #전구 켜보기
 commandResponse = LightControl.LightControl.lightOn(IP,username,lightname)
+
+time.sleep(5)
+
+#전구 색 변화
+commandResponse = LightControl.LightControl.changeXY(0.35,0.1)
