@@ -1,0 +1,20 @@
+I2C Device Permissions
+ddcutil requires read/write access to /dev/i2c devices, or more precisely all /dev/i2c devices associated with video cards.
+
+On some distributions, package i2c-tools creates group i2c, and assigns that group to the /dev/i2c devices using a udev rule. In that case all that is necessary is to add your user name to group i2c:
+
+$ sudo usermod your-user-name -aG i2c
+If group i2c does not already exist, the following command will create it:
+
+$ sudo groupadd --system i2c
+Then add your userid to group i2c as above.
+
+A sample udev rule for giving group i2c RW permission on the /dev/i2c devices can be found in distributed file 45-ddcutil-i2c.rules. Its exact location varies by distribution, but commonly the file is found in directory /usr/share/ddcutil/data. The file can be copied to /etc/udev/rules.d, but do check that this rule does not conflict with others in that directory.
+
+$ sudo cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
+For testing, it may be simpler to give everyone permission to write to /dev/i2c-* for the current boot:
+
+$ sudo chmod a+rw /dev/i2c-*
+For USB devices, see
+
+https://www.ddcutil.com/i2c_permissions/

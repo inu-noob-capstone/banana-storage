@@ -1,0 +1,25 @@
+Ok, now were are sorted! And permissions is the problem. A quick fix is to change the permissions of /dev/i2c-1  or /dev/i2c-0  (depends on rpi model) with the command:
+
+sudo chmod a+rw /dev/i2c-*
+This is temporary and is lost at next boot so, to fix it permanently you need to do the following:
+
+Edit the file /etc/udev/rules.d/99-com.rules
+
+If this line exists:
+
+SUBSYSTEM=="ic2-dev", GROUP="i2c", MODE="0660"
+then change the MODE to "0666".
+
+If it does not exist then add it with the MODE="0666" and also note the "==".
+
+Reboot.
+
+NOTE: My system is RPi3. For other variants the file in /etc/udev/rules.d may have a different name so check them all to find the one with the entry you need to change.  Also, the entry may say KERNEL instead of SUBSYSTEM depending on you Debian version. The important thing to find is the line with "i2c-dev" in it. After making the above changes you can use WingIDE on RPi with i2c devices actually working natively. For debugging it's worth every penny.
+
+Following on from my experiences with i2c, the situation is much the same for GPIO, and the fix much the same.The "quick fix" is: sudo chmod a+rw /dev/gpiomemFor the permanent fix the entry will be something like SUBSYSTEM=="bcm2835-gpiomem", GROUP="gpio", MODE="0660".  As before change the MODE to "0666".That's it, i2c and GPIO working with WingIDE.
+
+If you happen to need the spi bus then, assuming you have enabled it using sudo raspi-config, you will need to make the same changes to the entry with "spidev" in it.
+
+David
+
+https://ask.wingware.com/question/3/i2c-problem-with-remote-raspberry-pi/
