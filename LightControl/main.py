@@ -1,7 +1,9 @@
+import sys
 import LightControl
 import measureLux
 import GetIP
 import GetUsername
+import LightSetting
 import time
 import threading
 
@@ -22,8 +24,13 @@ print()
 print('전구 이름 :',lightname)
 print()
 
+#빛 관련 데이터 저장을 위한 객체 생성
+lightSetting = LightSetting.LightSetting()
+
 #빛의 세기 지속적으로 측정
-t1 = threading.Thread(target=measureLux.measureLux, daemon = True)
+m = measureLux.MeasureLux()
+t1 = threading.Thread(target = m.measureLux, daemon = True)
+t1.deamon = True
 t1.start()
 
 #전구 기본색으로 설정
@@ -50,3 +57,13 @@ commandResponse = LightControl.LightControl.changeColorTypeB(IP,username,lightna
 time.sleep(5)
 
 commandResponse = LightControl.LightControl.changeColorTypeC(IP,username,lightname)
+
+#최소 lux 값
+main.lux = 1000
+
+#빛 세기 값 main에서 접근해보기.
+print('현재 lux :',t1.lux)
+
+#빛 세기 측정 중단.
+t1.stop_threads = True
+

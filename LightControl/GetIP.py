@@ -16,7 +16,7 @@ class GetIP:
     def __init__(self):
         pass
 
-    @staticmethod
+    #@staticmethod
     def findIP():
         #Set up UDP socket
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)

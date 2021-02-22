@@ -1,5 +1,7 @@
 import requests
 import json
+import CustomException
+import LightSetting
 
 class LightControl:
     @staticmethod
@@ -64,6 +66,16 @@ class LightControl:
         x = '0.3125'
         y = '0.2125'
         payload = '{"xy":['+x+','+y+']}'
+        r = requests.put(URL, data=payload)
+        print('changeColorTypeC 결과 :',r.text)
+        return r.text
+
+    def changeBrightness(ip,username,lightname,brightness):
+        if brightness < 0 or brightness > 254:
+            raise CustomException.WrongBrightness
+        
+        URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
+        payload = '{"bri":'+brightness+'}'
         r = requests.put(URL, data=payload)
         print('changeColorTypeC 결과 :',r.text)
         return r.text
