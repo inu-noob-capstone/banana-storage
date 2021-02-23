@@ -28,7 +28,7 @@ print()
 lightSetting = LightSetting.LightSetting()
 
 #빛의 세기 지속적으로 측정
-m = measureLux.MeasureLux()
+m = measureLux.MeasureLux(lightSetting)
 t1 = threading.Thread(target = m.measureLux, daemon = True)
 t1.deamon = True
 t1.start()

@@ -21,12 +21,10 @@ import time
 import threading
 import CustomException
 import LightSetting
+import concurrent.futures
 
-class MeasureLux(threading.Thread):
+class MeasureLux():
   def __init__(self):
-    threading.Thread.__init__(self)
-    self.deamon =True
-    self.stop_threads = False
     self.lux = 0
     
     # Define some constants from the datasheet
@@ -70,22 +68,23 @@ class MeasureLux(threading.Thread):
     data = self.bus.read_i2c_block_data(addr,self.ONE_TIME_HIGH_RES_MODE_1,2)
     return self.convertToNumber(data)
 
-  def measureLux(self, LightSetting.LightSetting):
-      while True:
+  def measureLux(self):
         self.lux = self.readLight()
         print("Light Level : " + format(self.lux,'.2f') + " lx")
         time.sleep(0.5)
+        return self.lux
         if self.stop_threads:
           raise CustomException.MeasureLuxTerminate
-          break
 
-  def MeasureLuxTerminate(self):
-    raise CustomException.MeasureLuxTerminate
-      
+def work(lightSetting):
+  lightSetting.lux = 999
+
 if __name__=="__main__":
+  global lightSetting
+  lightSetting = LightSetting.LightSetting()
   m = MeasureLux()
-  t = threading.Thread(target = m.measureLux, daemon = True)
-  t.daemon = True
-  m.stop_threads = False
-  t.start()
-  m.stop_threads = True  
+
+  lightSetting.lux = m.measureLux()
+  print('lightSetting.lux :', lightSetting.lux)
+  work(lightSetting)
+  print('lightSetting.lux :', lightSetting.lux)
