@@ -1,0 +1,59 @@
+ENGLISH (01~03)
+
+A. Brief Introduction
+
+The digital luxmeter is a professional instrument for measuring illumination and brightness.
+
+meter n. 계량기, 측정기
+illumination n. 빛
+
+, which can be used in light intensity measurement engineering, quality control, illness prevention and treatment and measurement of light intensity in all kinds of environments such as factories, schools, offices, transportation routes, families, etc.
+
+intensity n. (빛의) 세기, 강도
+illness n. 병, 질환
+treatment n. 치료, 처치
+
+The digital luxmeter boasts the following features:
+
+1. Measure current illumination and temperature.
+2. Measure difference value, max value and min value.
+3. Switch between illumination and temperature unit.
+4. The measurement range is (0~200,000) lux, auto switch of measurement gear.
+5. Automatic storage and munual storage of illumination data.
+6. Setting of automatic power off.
+7. Backlight and data holding
+8. The digital luxmeter is equipped with APP which passes through Bluetooth, so as to facilitate all kind of operations on th digital luxmeter (For the bluetooth version only)
+
+boast v. 자랑할 만한 ~을 갖고 있다.
+unit n. (계량) 단위
+gear n. (특정 목적) 장치
+be equipped with ~이 갖춰져 있다.
+pass through ~를 통해 전하다, 얘기하다, 통신하다.
+
+so as to V ~하기 위해서, ~하려고
+facilitate v. 가능하게 하다, 용이하게 하다.
+
+
+B. Instrument Introduction
+
+1. Shade cover
+
+shade n. 빛 가리개
+
+2. Photometer
+n. 광도계
+
+3. Record illumination data
+record n. 기록
+
+4.
+.
+.
+.
+
+C. Operation Instruction
+
+4. Data recording(REC), data reading(READ), data deleting(DEL), data deleting(DEL)
+
+Under common measurement state, long press MODE button to enter into data recording, reading, and deleting mode, then long press MODE button to return to normal measurement interface, or else short press MODE button to specifically switch to one corresponding state among data recording, reading, and deleting.
+
