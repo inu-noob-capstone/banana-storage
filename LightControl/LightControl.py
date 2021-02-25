@@ -1,15 +1,24 @@
 import requests
 import json
+import CustomException
+import LightSetting
 
 class LightControl:
-    @staticmethod
+    def trace(func):
+        def wrapper(ip, username, *args):
+            print()
+            func(ip, username, *args)
+            print()
+        return wrapper
+
+    @trace
     def getLightList(ip, username):
         URL = 'http://'+ip+'/api/'+username+'/lights'
         r = requests.get(URL)
         print('light 목록 :',r.json())
         return r.text 
 
-    @staticmethod
+    @trace
     def lightOff(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         payload = '{"on":false}'
@@ -17,13 +26,15 @@ class LightControl:
         print('lightOff 결과 :',r.text)
         return r.text
 
+    @trace
     def lightOn(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         payload = '{"on":true}'
         r = requests.put(URL, data=payload)
         print('lightOn 결과 :',r.text)
         return r.text
-        
+
+    @trace
     def changeXY(ip,username,lightname,x, y):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = "{}".format(x)
@@ -33,6 +44,7 @@ class LightControl:
         print('changeXY 결과 :',r.text)
         return r.text
 
+    @trace
     def setColorToDefault(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         ct = '263'
@@ -41,6 +53,7 @@ class LightControl:
         print('setColorToDefault 결과 :',r.text)
         return r.text
 
+    @trace
     def changeColorTypeA(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.35'
@@ -50,6 +63,7 @@ class LightControl:
         print('changeColorTypeA 결과 :',r.text)
         return r.text
 
+    @trace
     def changeColorTypeB(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.325'
@@ -59,6 +73,7 @@ class LightControl:
         print('changeColorTypeB 결과 :',r.text)
         return r.text
 
+    @trace
     def changeColorTypeC(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.3125'
@@ -68,5 +83,13 @@ class LightControl:
         print('changeColorTypeC 결과 :',r.text)
         return r.text
 
+    @trace
+    def changeBrightness(ip,username,lightname,brightness):
+        if brightness < 0 or brightness > 254:
+            raise CustomException.WrongBrightness
         
-    
+        URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
+        payload = '{"bri":'+brightness+'}'
+        r = requests.put(URL, data=payload)
+        print('changeBrightness 결과 :',r.text)
+        return r.text
