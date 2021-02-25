@@ -1,10 +1,13 @@
+import CustomException
+
 class LightSetting:
     def __init__(self):
         self.x = 0
         self.y = 0
         self.ct = 0
         self.bri = 0
-        self.lux = 0
+        self.goalLux = 0
+        self.currentLux = 0
         self.on = False
 
     def trace(func):
@@ -30,18 +33,29 @@ class LightSetting:
 
     @trace
     def changeBrightness(self, bri):
+        if bri<0:
+            raise CustomException.WrongBrightnessRange
+            return
+        elif bri>254:
+            raise CustomException.WrongBrightnessRange
+            return
         print('bri : {} -> {}'.format(self.bri, bri))
         self.bri = bri
 
     @trace
-    def changeLux(self, lux):
-        print('lux : {} -> {}'.format(self.lux, lux))
-        self.lux = lux
+    def changeCurrentLux(self, lux):
+        print('current lux : {} -> {}'.format(self.currentLux, lux))
+        self.currentLux = lux
 
     @trace
     def changeOn(self, on):
         print('on : {} -> {}'.format(self.on, on))
         self.on = on
+
+    @trace
+    def changeGoalLux(self, lux):
+        print('goal lux : {} -> {}'.format(self.goalLux, lux))
+        self.goalLux = lux
 
 if __name__=="__main__":
     lightSetting = LightSetting()
