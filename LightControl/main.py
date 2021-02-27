@@ -18,10 +18,12 @@ print('IP:',IP)
 print('username:',username)
 print()
 
-#전구 목록 얻어오기
-listOfLight = LightControl.LightControl.getLightList(IP, username)
+#브릿지에서 전구 정보 얻어오기
+lightInfo = LightControl.LightControl.getLightList(IP, username)
 
-lightname = listOfLight[2]
+#전구 이름 초기화
+lightname = '1'
+
 print()
 print('전구 이름 :',lightname)
 print()
@@ -29,6 +31,15 @@ print()
 #빛 관련 데이터 저장을 위한 객체 생성
 global lightSetting
 lightSetting = LightSetting.LightSetting()
+
+#빛 관련 정보 초기화
+lightSetting.changeX(lightInfo[lightname]['state']['xy'][0])
+lightSetting.changeY(lightInfo[lightname]['state']['xy'][1])
+lightSetting.changeOn(lightInfo[lightname]['state']['on'])
+lightSetting.changeCt(lightInfo[lightname]['state']['ct'])
+lightSetting.changeBrightness(lightInfo[lightname]['state']['bri'])
+
+    
 
 #빛의 세기 측정을 위한 객체 생성
 m = measureLux.MeasureLux()
@@ -72,19 +83,23 @@ time.sleep(5)
 commandResponse = LightControl.LightControl.changeColorTypeC(IP,username,lightname)
 
 #목표 lux값 설정
-lightSetting.changeGoalLux(150)
+lightSetting.changeGoalLux(100)
 
 while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r')
     #현재 lux가 부족하면 빛 세기 증가
-    if lightSetting.goalLux < lightSetting.currentLux and lightSetting.bri<254:
-        lightSetting.changeBrightness(lightSetting.bri+1)
-        commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
-        time.sleep(0.5)
+    if lightSetting.goalLux > lightSetting.currentLux and lightSetting.bri<254:
+        if lightSetting.bri<220 and lightSetting.bri > 10:
+            lightSetting.changeBrightness(int(lightSetting.bri*1.15))
+            commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
+        else:
+            lightSetting.changeBrightness(lightSetting.bri+1)
+            commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
 
     #현재 lux가 과하면 빛 세기 감소
-    if lightSetting.goalLux > lightSetting.currentLux and lightSetting.bir>0:
-        lightSetting.changeBrightness(lightSetting.bri-1)
-        commandResponse = LightControl.lightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
+    if lightSetting.goalLux < lightSetting.currentLux and lightSetting.bri>0:
+        lightSetting.changeBrightness(int(lightSetting.bri/1.08))
+        commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
+        
 
 #빛 세기 측정 스레드 종료
 stop_thread = True

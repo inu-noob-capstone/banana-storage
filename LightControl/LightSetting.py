@@ -42,7 +42,6 @@ class LightSetting:
         print('bri : {} -> {}'.format(self.bri, bri))
         self.bri = bri
 
-    @trace
     def changeCurrentLux(self, lux):
         print('current lux : {} -> {}'.format(self.currentLux, lux))
         self.currentLux = lux
@@ -54,6 +53,7 @@ class LightSetting:
 
     @trace
     def changeGoalLux(self, lux):
+        print()
         print('goal lux : {} -> {}'.format(self.goalLux, lux))
         self.goalLux = lux
 

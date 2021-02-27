@@ -2,13 +2,15 @@ import requests
 import json
 import CustomException
 import LightSetting
+import GetIP
 
 class LightControl:
     def trace(func):
         def wrapper(ip, username, *args):
             print()
-            func(ip, username, *args)
+            r = func(ip, username, *args)
             print()
+            return r
         return wrapper
 
     @trace
@@ -16,7 +18,7 @@ class LightControl:
         URL = 'http://'+ip+'/api/'+username+'/lights'
         r = requests.get(URL)
         print('light 목록 :',r.json())
-        return r.text 
+        return r.json() 
 
     @trace
     def lightOff(ip,username,lightname):
@@ -89,7 +91,14 @@ class LightControl:
             raise CustomException.WrongBrightness
         
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
-        payload = '{"bri":'+brightness+'}'
+        payload = '{"bri":'+str(brightness)+'}'
         r = requests.put(URL, data=payload)
         print('changeBrightness 결과 :',r.text)
         return r.text
+
+if __name__ == "__main__":
+    IP = GetIP.GetIP.findIP()
+    username = 'Z6GeaIS8gsa7TTmFurLJB3-fNrsdFMXl79oYmowb'
+    listOfLight = LightControl.getLightList(IP,username)
+    lightName = listOfLight[2]
+    print('lightname:',lightName)

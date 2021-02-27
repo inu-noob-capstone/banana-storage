@@ -71,7 +71,7 @@ class MeasureLux():
   def measureLux(self):
         self.lux = self.readLight()
         print("measured Light Level : " + format(self.lux,'.2f') + " lx")
-        time.sleep(0.5)
+        time.sleep(1)
         return self.lux
         if self.stop_threads:
           raise CustomException.MeasureLuxTerminate
