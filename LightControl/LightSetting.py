@@ -51,7 +51,6 @@ class LightSetting:
         print('on : {} -> {}'.format(self.on, on))
         self.on = on
 
-    @trace
     def changeGoalLux(self, lux):
         print()
         print('goal lux : {} -> {}'.format(self.goalLux, lux))

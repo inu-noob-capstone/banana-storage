@@ -6,7 +6,7 @@ import GetUsername
 import LightSetting
 import time
 import threading
-import continuous_threading
+import keyboard
 import CustomException
 
 IP = GetIP.GetIP.findIP()
@@ -38,7 +38,6 @@ lightSetting.changeY(lightInfo[lightname]['state']['xy'][1])
 lightSetting.changeOn(lightInfo[lightname]['state']['on'])
 lightSetting.changeCt(lightInfo[lightname]['state']['ct'])
 lightSetting.changeBrightness(lightInfo[lightname]['state']['bri'])
-
     
 
 #빛의 세기 측정을 위한 객체 생성
@@ -82,10 +81,22 @@ time.sleep(5)
 
 commandResponse = LightControl.LightControl.changeColorTypeC(IP,username,lightname)
 
-#목표 lux값 설정
-lightSetting.changeGoalLux(100)
+#목표 lux값 설정. i 누르면 lux 값 입력 받음.
+def run2(lightSetting):
+    while not stop_thread:
+        if keyboard.is_pressed('i'):
+            goalLux = int(input('목표 lux 값 설정 :'))
+            lightSetting.changeGoalLux(goalLux)
+        
+t2 = threading.Thread(target=run2, args=(lightSetting,), daemon=True)
+t2.start()
 
 while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r')
+    #esc 누르면 기능 종료
+    if keyboard.is_pressed('esc'):
+        stop_thread = True
+        break
+        
     #현재 lux가 부족하면 빛 세기 증가
     if lightSetting.goalLux > lightSetting.currentLux and lightSetting.bri<254:
         if lightSetting.bri<220 and lightSetting.bri > 10:
@@ -98,15 +109,16 @@ while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r'
     #현재 lux가 과하면 빛 세기 감소
     if lightSetting.goalLux < lightSetting.currentLux and lightSetting.bri>0:
         lightSetting.changeBrightness(int(lightSetting.bri/1.08))
-        commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)
-        
+        commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.bri)        
 
-#빛 세기 측정 스레드 종료
-stop_thread = True
-raise CustomException.MeasureLuxTerminate
 '''
 while True:
     print('lightSetting의 currentLux 값 :',lightSetting.currentLux)
     print()
     time.sleep(0.5)
+    
+#빛 세기 측정 스레드 종료
+stop_thread = True
+raise CustomException.MeasureLuxTerminate
+
 '''
