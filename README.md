@@ -11,7 +11,7 @@ Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won      (구 멤버)
 
 (Above members quit at Februray, 2021)     (구 멤버들은 프로젝트 진행 중 2021년 2월 경에 탈퇴함.)
 
-Mail address and username of each one.      (멤버들의 이름, 이메일과 github username)
+Mail address and username of each one.      (아래는 멤버들의 이름, 이메일과 github username)
 
 ---------------------------------------------------------
 Current Member's 
