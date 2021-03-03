@@ -5,7 +5,7 @@ We are CE students of INU(Incheon National University).
 
 2020년 가을부터 2021년 여름까지 인천대 컴공 학생들의 졸업용 프로젝트.
 
-Members of Group : Kwon Min Soo, Kim Do Gyun,         +Coding Monkeys    (현 멤버)
+Members of Group : Kwon Min Soo, Kim Do Gyun.       (현 멤버)         ~~+Coding Monkeys~~
 
 Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won      (구 멤버)
 
