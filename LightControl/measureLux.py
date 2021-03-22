@@ -19,8 +19,8 @@
 from smbus2 import SMBus
 import time
 import threading
-import CustomException
-import LightSetting
+import LightControl.CustomException as CustomException
+import LightControl.LightSetting as LightSetting
 import concurrent.futures
 
 class MeasureLux():
@@ -70,7 +70,7 @@ class MeasureLux():
 
   def measureLux(self):
         self.lux = self.readLight()
-        print("measured Light Level : " + format(self.lux,'.2f') + " lx")
+        print("측정된 조도 : " + format(self.lux,'.2f') + " lx")
         time.sleep(1)
         return self.lux
         if self.stop_threads:

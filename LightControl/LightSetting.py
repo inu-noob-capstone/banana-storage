@@ -1,4 +1,4 @@
-import CustomException
+import LightControl.CustomException as CustomException
 
 class LightSetting:
     def __init__(self):
@@ -43,7 +43,7 @@ class LightSetting:
         self.bri = bri
 
     def changeCurrentLux(self, lux):
-        print('current lux : {} -> {}'.format(self.currentLux, lux))
+        print('저장된 조도 : %.2f lux -> %.2f lux' % (self.currentLux, lux))
         self.currentLux = lux
 
     @trace

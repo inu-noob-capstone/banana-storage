@@ -38,7 +38,6 @@ lightSetting.changeY(lightInfo[lightname]['state']['xy'][1])
 lightSetting.changeOn(lightInfo[lightname]['state']['on'])
 lightSetting.changeCt(lightInfo[lightname]['state']['ct'])
 lightSetting.changeBrightness(lightInfo[lightname]['state']['bri'])
-    
 
 #빛의 세기 측정을 위한 객체 생성
 m = measureLux.MeasureLux()

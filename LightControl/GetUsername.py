@@ -1,7 +1,7 @@
-import GetIP
+import LightControl.GetIP as GetIP
 import requests
 import sys
-import CustomException
+import LightControl.CustomException as CustomException
 
 class GetUsername:
 

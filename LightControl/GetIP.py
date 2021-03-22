@@ -1,5 +1,5 @@
 import socket
-import CustomException
+import LightControl.CustomException as CustomException
 import requests
 
 class GetIP:

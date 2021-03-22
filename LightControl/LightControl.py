@@ -1,8 +1,9 @@
 import requests
 import json
-import CustomException
-import LightSetting
-import GetIP
+from LightControl import CustomException as CustomException
+#import LightControl.CustomException as CustomException
+#import LightSetting
+import LightControl.GetIP as GetIP
 
 class LightControl:
     def trace(func):
