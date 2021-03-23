@@ -70,8 +70,8 @@ class MeasureLux():
 
   def measureLux(self):
         self.lux = self.readLight()
-        print("측정된 조도 : " + format(self.lux,'.2f') + " lx")
-        time.sleep(1)
+        #print("측정된 조도 : " + format(self.lux,'.2f') + " lx")
+        #time.sleep(0.5)
         return self.lux
         if self.stop_threads:
           raise CustomException.MeasureLuxTerminate

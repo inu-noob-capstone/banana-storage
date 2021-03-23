@@ -50,8 +50,8 @@ class MeasureHumidity():
 
         #converting received data into % measure.
         self.humidity = int(self.map(adcValue, 0, self.HUM_MAX, 0, 100))
-        print("측정된 습도 : %d%%" % (self.humidity))
-        time.sleep(1)
+        #print("측정된 습도 : %d%%" % (self.humidity))
+        #time.sleep(0.5)
         return self.humidity
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ class WaterSetting:
         self.adcValue = 0
         self.humidity = 0
         self.humThreshold = 0 #이거 보다 습도가 낮을 때, 모터 작동할 예정
+        self.on = False # 모터가 켜져 있는지 나타내는 flag. False일 때 꺼진 상태
 
     def trace(func):
         def wrapper(self,x):
