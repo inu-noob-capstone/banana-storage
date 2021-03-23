@@ -23,8 +23,8 @@ Kim Do Gyun, 김도균 : rlaehrbs98@naver.com, 5verlord
 
 ---------------------------------------------------------
 
-프로젝트 진행도 참조 문서:
-21년 1학기 서류/프로젝트 진행도.docx
+프로젝트 진행도 표시 :
+https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
 
 
 
