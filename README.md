@@ -40,6 +40,9 @@ Choi Jae won, 최재원 : didltidsjadk@naver.com, wodnjs8207
 
 
 
+----------------------------------------------------------
+
+
 
 This is storage for the project. And We call this project as Capstone Design. I hope some Code Monkeys will be here for some banana, and help us.
 
