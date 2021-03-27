@@ -23,6 +23,13 @@ Kim Do Gyun, 김도균 : rlaehrbs98@naver.com, 5verlord
 
 ---------------------------------------------------------
 
+프로젝트 진행도를 표시한 문서 :
+https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
+
+
+
+---------------------------------------------------------
+
 Ex-Member's
 
 Yoon Jong Hwa, 윤종화 : whdghk2gh@naver.com, whdghk1gh
@@ -31,6 +38,9 @@ Li Lim, 이림 : 836176537@qq.com, LILIN201702
 
 Choi Jae won, 최재원 : didltidsjadk@naver.com, wodnjs8207
 
+
+
+----------------------------------------------------------
 
 
 
