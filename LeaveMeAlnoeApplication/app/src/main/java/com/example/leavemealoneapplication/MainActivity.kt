@@ -9,31 +9,64 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. 기본 타입 배열 선언하기 - 각 기본 타입별로 10개의 빈 공간이 할당됩니다.
-        var students =IntArray(10)
-        var longArray = LongArray(10)
-        var CharArray = CharArray(10)
-        var FloatArray = FloatArray(10)
-        var DoubleArray = DoubleArray(10)
-        // arrayOf 함수를 사용하면 선언과 동시에 값을 입력할 수 있습니다.
-        var intArray = intArrayOf(1,2,3,4,5,6,7,8,9,10)
-        // intArray 변수에는 1부터 10까지의 값이 각각의 배열 공간에 저장되어 있습니다.
+        // 접근 제한자 테스트
+        var child = Child()
+        child.callVariables()
 
-        // 2. 문자열 타입 배열 선언하기
-        var stringArray = Array(10, {item->""})
-        // arrayOf 함수로 값을 직접 입력해서 배열을 생성할 수 있습니다.
-        var dayArray = arrayOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
-
-        // 3. 앞에서 선언한 students 변수에 값 넣기
-        // 가. 대괄호를 사용하는 방법
-        students[0] = 90
-        students[1] = 91
-        students[2] = 92
-        students[3] = 93
-        students[4] = 94
-        // 나. set 함수를 사용하는 방법
-        students.set(5, 95)
-        students.set(6, 96)
-        students.set(7, 97)
-        students.set(8, 98)
+        // 부모 클래스 직접 호출해보기
+        var parent = Parent()
+        Log.d("Visibility", "Parent: 기본 제한자 defaultVal의 값은 ${parent.defaultVal}")
+        Log.d("Visibility", "Parent: internalVal의 값은 ${parent.internalVal}")
     }
+}
+
+// 추상 클래스 설계
+abstract class Animal{
+    fun walk(){
+        Log.d("abstract", "걷습니다.")
+    }
+    abstract fun move()
+}
+
+// 구현
+class Bird:Animal(){
+    override fun move(){
+        Log.d("abstract","날아서 이동합니다.")
+    }
+}
+
+// interface 설계
+interface InterfaceKotlin {
+    var variable: String
+    fun get()
+    fun set()
+}
+
+//구현
+class KotlinImpl: InterfaceKotlin{
+    override var variable: String = "init value"
+    override fun get(){
+        // 코드 구현
+    }
+    override fun set(){
+        // 코드 구현
+    }
+}
+
+// 접근 제한자 테스트를 위한 부모 클래스
+open class Parent{
+    private val privateVal = 1
+    protected open val protectedVal = 2
+    internal val internalVal = 3
+    val defaultVal = 4
+}
+
+// 자식 클래스
+class Child: Parent(){
+    fun callVariables(){
+        // privateVal은 호출이 안 됩니다.
+        Log.d("Visibility","Child: protected의 값은 ${protectedVal}")
+        Log.d("Visibility", "Child: internalVal의 값은 ${internalVal}")
+        Log.d("Visibility", "Child: 기본 제한자 defaultVal의 값은 ${defaultVal}")
+    }
+}
