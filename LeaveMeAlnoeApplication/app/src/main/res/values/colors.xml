@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- 새로 추가 -->
+    <color name="color_blue">#0000FF</color>
+    <color name="color_red">#FF0000</color>
 </resources>
