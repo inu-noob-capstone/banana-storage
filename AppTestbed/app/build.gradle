@@ -8,13 +8,13 @@ android {
     buildFeatures{
         viewBinding true
     }
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.leavemealoneapplication"
+        applicationId "com.example.apptestbed"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 

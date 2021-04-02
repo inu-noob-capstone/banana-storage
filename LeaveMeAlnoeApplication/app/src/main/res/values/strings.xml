@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LeaveMeAloneApplication</string>
-    <string name="string_01"> 화면에 보여질
-        글자01 </string>
-    <string name="string_02"> 화면에 보여질
-        글자02 </string>
+    <string name="AppTitle">Leave Me Alone</string>
+    <string name="mainCurrentLux">현재 조도 : 1,000 Lux</string>
+    <string name="mainLuxRange">(0 ~ 65,535 Lux)</string>
+    <string name="mainCurrentHumidity">현재 습도 : 50%</string>
 </resources>
