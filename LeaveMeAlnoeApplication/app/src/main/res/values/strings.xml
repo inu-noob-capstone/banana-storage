@@ -4,4 +4,7 @@
     <string name="mainCurrentLux">현재 조도 : 1,000 Lux</string>
     <string name="mainLuxRange">(0 ~ 65,535 Lux)</string>
     <string name="mainCurrentHumidity">현재 습도 : 50%</string>
+    <string name="mainWaterButtonText">수분 관리</string>
+    <string name="mainBulbButtonText">조명 관리</string>
+    <string name="mainCommunicationText">통신</string>
 </resources>

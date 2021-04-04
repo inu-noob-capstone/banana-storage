@@ -1,30 +1,35 @@
 package com.example.apptestbed
 
-
-import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.CompoundButton
+import android.widget.Toast
 import com.example.apptestbed.databinding.ActivityMainBinding
-
 
 class MainActivity : AppCompatActivity() {
 
-    val binding by lazy { ActivityMainBinding.inflate(layoutInflater)}
+    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        
-        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                R.id.radioApple -> Log.d("RadioButton", "사과가 선택되었습니다.")
-                R.id.radioBanana -> Log.d("RadioButton", "바나나가 선택되었습니다.")
-                R.id.radioOrange -> Log.d("RadioButton", "오렌지가 선택되었습니다.")
+
+        val intent = Intent(this, SubActivity::class.java)
+        intent.putExtra("from1","Hello Bundle")
+        intent.putExtra("from2", 2021)
+        binding.btnStart.setOnClickListener { startActivityForResult(intent, 99) }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK){
+            when(requestCode) {
+                99 -> {
+                    val message = data?.getStringExtra("returnValue")
+                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                }
             }
         }
-
     }
 }
-
