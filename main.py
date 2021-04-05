@@ -8,9 +8,12 @@ from WaterControl import *
 import RPi.GPIO as GPIO
 import spidev
 
+#브릿지의 IP 주소 알아오기.
 IP = GetIP.GetIP.findIP()
+
 #username = GetUsername.GetUsername.GetUsername2(IP)
 
+#브릿지에게 메세지를 보낼 때 쓸 username. 일종의 계정 ID.
 username = 'Z6GeaIS8gsa7TTmFurLJB3-fNrsdFMXl79oYmowb'
 
 print('IP:',IP)
@@ -56,7 +59,7 @@ waterSetting = WaterSetting.WaterSetting()
 #펌프 작동에 사용할 객체 생성
 pump = WaterPump.WaterPump()
 
-#빛과 습도 지속적으로 자동 측정
+#빛과 습도 측정하여 값을 setting에 저장하는 함수.
 def autoCheck(lightSetting, mL, waterSetting, mH, mutex, thread_safe):  
     if thread_safe:
         mutex.acquire()
@@ -74,6 +77,7 @@ t1 = threading.Thread(target=autoCheck, args=(lightSetting, mL, waterSetting, mH
 t1.start()
 '''
 
+#데이터가 들어있는 setting 객체 내용을 출력하는 함수.
 def printSetting(lightSetting, waterSetting, mutex, thread_safe):
     if thread_safe:
         mutex.acquire()
@@ -115,11 +119,6 @@ def keyboardInput(lightSetting, mutex, thread_safe):
         if thread_safe:
             mutex.release()
 
-
-'''        
-t3 = threading.Thread(target=run3, args=(lightSetting,), daemon=True)
-t3.start()
-'''
 
 
 #전구나 모터 켜고 끄는 반복적 관리 동작
