@@ -62,24 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainLuxRange" />
 
-    <ImageButton
-        android:id="@+id/mainWaterControlButton"
-        android:layout_width="73dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="222dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mainLightControlButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainCurrentHumidity"
-        app:srcCompat="@drawable/water_drop" />
-
     <TextView
         android:id="@+id/mainLuxRange"
         android:layout_width="275dp"
@@ -98,87 +80,42 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/mainLightControlButton"
-        android:layout_width="73dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="142dp"
-        android:layout_marginBottom="222dp"
+        android:id="@+id/mainMoisture"
+        android:layout_width="96dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="76dp"
         android:background="@android:color/transparent"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainCurrentHumidity"
-        app:srcCompat="@drawable/bulb" />
+        app:srcCompat="@drawable/moisture" />
 
     <ImageButton
-        android:id="@+id/mainCommunicationButton"
-        android:layout_width="75dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="142dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="222dp"
+        android:id="@+id/mainLight"
+        android:layout_width="94dp"
+        android:layout_height="146dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="68dp"
         android:background="@android:color/transparent"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mainLightControlButton"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/mainMoisture"
         app:layout_constraintTop_toBottomOf="@+id/mainCurrentHumidity"
-        app:srcCompat="@drawable/communication" />
+        app:srcCompat="@drawable/light" />
 
-    <TextView
-        android:id="@+id/mainWaterButtonText"
-        android:layout_width="64dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginBottom="150dp"
-        android:text="@string/mainWaterButtonText"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainWaterControlButton" />
-
-    <TextView
-        android:id="@+id/mainBulbButtonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="200dp"
-        android:text="@string/mainBulbButtonText"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLightControlButton" />
-
-    <TextView
-        android:id="@+id/mainCommunicationText"
-        android:layout_width="37dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="166dp"
-        android:text="@string/mainCommunicationText"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mainBulbButtonText"
-        app:layout_constraintTop_toBottomOf="@+id/mainCommunicationButton" />
+    <ImageButton
+        android:id="@+id/mainCommunication"
+        android:layout_width="83dp"
+        android:layout_height="146dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="68dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/mainLight"
+        app:layout_constraintTop_toBottomOf="@+id/mainCurrentHumidity"
+        app:srcCompat="@drawable/communication_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

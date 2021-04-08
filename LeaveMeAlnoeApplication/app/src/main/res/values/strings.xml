@@ -7,4 +7,8 @@
     <string name="mainWaterButtonText">수분 관리</string>
     <string name="mainBulbButtonText">조명 관리</string>
     <string name="mainCommunicationText">통신</string>
+    <string name="pleaseInput">내용을 입력해주세요.</string>
+    <string name="lightControlCurrentLuxGoalTitle">현재 조도 목표치</string>
+    <string name="exampleGoalLux">1,000 Lux</string>
+    <string name="chlorophyllBContent">엽록소 B 함량</string>
 </resources>

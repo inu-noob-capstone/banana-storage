@@ -1,5 +1,6 @@
 package com.example.leavemealoneapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,25 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        val moistureIntent = Intent(this, MoistureManagement::class.java)
+        val lightIntent = Intent(this, LightManagement::class.java)
 
-        var list = mutableListOf("Scope", "Function")
-
-        val afterApply = list.let{
-            it.add("Apply")
-            it.count()
-        }
-        println("반환값 apply = $afterApply")
-
-        val afterAlso = list.run {
-            add("Also")
-            count()
-        }
-        println("반환값 also = $afterAlso")
-
-        val lastItemWith = with(list){
-            add("With")
-            get(size-1)
-        }
-        println("반환값 with = $lastItemWith")
+        binding.mainMoisture.setOnClickListener { startActivity(moistureIntent) }
+        binding.mainLight.setOnClickListener { startActivity(lightIntent) }
     }
 }
