@@ -97,4 +97,82 @@
         android:textSize="27dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:justifyContent="center"> <!-- this attribute is from the underlying FlexboxLayout -->
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            app:toggle_text="5:30PM" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            app:toggle_text="7:30PM" />
+
+        <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            app:toggle_text="8:00PM" />
+
+    </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
+
+    <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
+        android:id="@+id/chlorophyllBContent"
+        android:layout_width="271dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="48dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tbgCheckedButton="@+id/choice_a">
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/choice_a"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="적음"
+            android:textSize="25dp"
+            app:toggle_selectedBackgroundColor="#5E6FED" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/choice_b"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="보통"
+            android:textSize="25dp" />
+
+        <com.nex3z.togglebuttongroup.button.CircularToggle
+            android:id="@+id/choice_c"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:text="많음"
+            android:textSize="25dp" />
+
+        <!--...-->
+
+    </com.nex3z.togglebuttongroup.SingleSelectToggleGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="60dp"
+        android:text="전구"
+        android:textColor="@color/black"
+        android:textSize="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/chlorophyllBContent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
