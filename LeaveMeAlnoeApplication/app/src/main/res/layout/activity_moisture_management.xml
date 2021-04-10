@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
-        android:id="@+id/chlorophyllBContent"
+        android:id="@+id/lightOnOffToggleBtn"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="26dp"
@@ -125,6 +125,6 @@
         android:text="설정 저장"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chlorophyllBContent" />
+        app:layout_constraintTop_toBottomOf="@+id/lightOnOffToggleBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

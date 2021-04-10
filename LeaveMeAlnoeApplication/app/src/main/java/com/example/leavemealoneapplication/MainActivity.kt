@@ -15,8 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         val moistureIntent = Intent(this, MoistureManagement::class.java)
         val lightIntent = Intent(this, LightManagement::class.java)
+        val communicationIntent = Intent(this, Communication::class.java)
 
         binding.mainMoisture.setOnClickListener { startActivity(moistureIntent) }
         binding.mainLight.setOnClickListener { startActivity(lightIntent) }
+        binding.mainCommunication.setOnClickListener { startActivity(communicationIntent) }
     }
 }

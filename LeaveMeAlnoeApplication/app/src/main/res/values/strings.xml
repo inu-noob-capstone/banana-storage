@@ -11,4 +11,5 @@
     <string name="lightControlCurrentLuxGoalTitle">현재 조도 목표치</string>
     <string name="exampleGoalLux">1,000 Lux</string>
     <string name="chlorophyllBContent">엽록소 B 함량</string>
+    <string name="saveBtnText">설정 저장</string>
 </resources>
