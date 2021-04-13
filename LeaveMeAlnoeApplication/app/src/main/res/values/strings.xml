@@ -12,4 +12,5 @@
     <string name="exampleGoalLux">1,000 Lux</string>
     <string name="chlorophyllBContent">엽록소 B 함량</string>
     <string name="saveBtnText">설정 저장</string>
+    <string name="communicationPageBtn">APP-Raspberry Pi\nConnection</string>
 </resources>

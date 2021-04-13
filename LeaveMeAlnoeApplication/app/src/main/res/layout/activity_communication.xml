@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/unconnected"
         android:layout_width="264dp"
         android:layout_height="102dp"
         android:layout_marginStart="32dp"
@@ -31,14 +31,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/unconnected" />
 
+    <ImageView
+        android:id="@+id/connected"
+        android:layout_width="264dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/connected" />
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/communcationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginLeft="116dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="44dp"
-        android:text="Button"
+        android:text="@string/communicationPageBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/unconnected" />
 </androidx.constraintlayout.widget.ConstraintLayout>
