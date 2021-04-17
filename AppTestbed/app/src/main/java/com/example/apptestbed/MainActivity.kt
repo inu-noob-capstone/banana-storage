@@ -7,9 +7,17 @@ import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import java.lang.Thread
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.preference.Preference
+import androidx.preference.PreferenceManager
 import com.example.apptestbed.databinding.ActivityMainBinding
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,30 +27,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val customView = CustomView(this)
-        binding.frameLayout.addView(customView)
-    }
+        var total = 0
+        var started = false
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == RESULT_OK){
-            when(requestCode) {
-                99 -> {
-                    val message = data?.getStringExtra("returnValue")
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-                }
+        val hander = object : Handler(Looper.getMainLooper()){
+            override fun handleMessage(msg: Message){
+                val minute = String.format("%02d", total/60)
+                val second = String.format("%02d", total%60)
+                binding.textTimer.text = "$minute:$second"
             }
         }
-    }
-}
 
-class CustomView(context: Context): View(context) {
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-        val paint = Paint()
-        paint.color = Color.BLACK
-        paint.textSize = 100f
-        canvas?.drawText("안녕하세요", 400f, 400f, paint) // drawText 메서드
+        binding.buttonStart.setOnClickListener {
+
+        }
     }
 }
