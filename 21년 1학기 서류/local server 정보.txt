@@ -1,0 +1,10 @@
+고정 ip 사용하도록 설정해 두었음
+address : 192.168.219.110
+ufw allow 80 명령으로 http 포트 열어놔야 함.
+*ufw (ubunt firewall 약자. 방화벽 설정 바꾸는 command임)
+
+apache2로 서버 작동 시키기로 함.
+자세한 건 "리눅스 실습 for beginner" 책 404p 언저리 확인하기.
+
+서버의 기본 홈 디렉토리는 /var/www/html
+여기에 파일을 넣어두면 브라우저에서 상대 경로로 접근 가능.
