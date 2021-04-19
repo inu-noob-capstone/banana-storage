@@ -1,23 +1,25 @@
 package com.example.apptestbed
 
-import android.content.Context
-import android.content.Intent
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import java.lang.Thread
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.preference.Preference
-import androidx.preference.PreferenceManager
 import com.example.apptestbed.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
+import java.net.URL
 import kotlin.concurrent.thread
+
+suspend fun loadImage(imageUrl: String): Bitmap {
+    val url = URL(imageUrl)
+    val stream = url.openStream()
+    return BitmapFactory.decodeStream(stream)
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,19 +29,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        var total = 0
-        var started = false
+        binding.buttonDownload.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                binding.progress.visibility = View.VISIBLE
 
-        val hander = object : Handler(Looper.getMainLooper()){
-            override fun handleMessage(msg: Message){
-                val minute = String.format("%02d", total/60)
-                val second = String.format("%02d", total%60)
-                binding.textTimer.text = "$minute:$second"
+                val url = binding.editUrl.text.toString()
+                val bitmap = withContext(Dispatchers.IO){
+                    loadImage(url)
+                }
+
+                binding.imagePreview.setImageBitmap(bitmap)
+                binding.progress.visibility = View.GONE
             }
         }
 
-        binding.buttonStart.setOnClickListener {
+        var total = 0
+        var started = false
 
+        CoroutineScope(Dispatchers.Default).async {
+            val deffered1 = async{
+                delay(500)
+                350
+            }
+            val deffered2 = async {
+                delay(1000)
+                200
+            }
+            Log.d("코루틴", "연산 결과 = ${deffered1.await() + deffered2.await()}")
         }
+
     }
 }
