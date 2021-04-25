@@ -1,4 +1,6 @@
+#import CustomException __main 할 때 
 import LightControl.CustomException as CustomException
+import json
 
 class LightSetting:
     def __init__(self):
@@ -8,6 +10,7 @@ class LightSetting:
         self.bri = 0
         self.goalLux = 0
         self.currentLux = 0
+        self.chlorophyll= "B"
         self.on = False
 
     def trace(func):
@@ -56,7 +59,47 @@ class LightSetting:
         print('goal lux : {} -> {}'.format(self.goalLux, lux))
         self.goalLux = lux
 
+    def changeChlorophyll(self, chlorophyll):
+        if chlorophyll == "A" or chlorophyll == "B" or chlorophyll == "C":
+            print('chlorophyll : {} -> {}'.format(self.chlorophyll, chlorophyll))
+            self.chlorophyll = chlorophyll
+        else:
+            raise CustomException.WrongChlorophyll
+
+    def lightSettingToDict(self):
+        lightSettingByDictionary = dict()
+
+        lightSettingByDictionary["x"] = self.x
+        lightSettingByDictionary["y"] = self.y
+        lightSettingByDictionary["ct"] = self.ct
+
+        lightSettingByDictionary["bri"] = self.bri
+        lightSettingByDictionary["goalLux"] = self.goalLux
+        lightSettingByDictionary["currentLux"] = self.currentLux
+
+        lightSettingByDictionary["chlorophyll"] = self.chlorophyll
+        lightSettingByDictionary["on"] = self.on
+
+        return lightSettingByDictionary
+
+    def dictToLightSetting(self, dictionary):
+        self.x = dictionary["x"]
+        self.y = dictionary["y"]
+        self.ct = dictionary["ct"]
+
+        self.bri = dictionary["bri"]
+        
+        self.changeGoalLux(dictionary["goalLux"])
+        
+        self.currentLux = dictionary["currentLux"]
+        
+        self.changeChlorophyll(dictionary["chlorophyll"])
+        
+        self.on = dictionary["on"]
+        
+
 if __name__=="__main__":
     lightSetting = LightSetting()
-    lightSetting.changeX(2)
-    print(lightSetting.x)
+    dict = lightSetting.lightSettingToDict()
+
+    print(dict)

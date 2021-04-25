@@ -24,4 +24,22 @@ class WaterSetting:
         print("문턱 습도 : {}% -> {}%" .format(self.humThreshold, humThreshold))
         self.humThreshold = humThreshold
 
+    def waterSettingToDict(self):
+        waterSettingByDict = dict()
+
+        waterSettingByDict["adcValue"] = self.adcValue
+        waterSettingByDict["humidity"] = self.humidity
+        waterSettingByDict["humThreshold"] = self.humThreshold
+        waterSettingByDict["on"] = self.on
+
+        return waterSettingByDict
+
+    def dictToWaterSetting(self, dictionary):
+        self.adcValue = dictionary["adcValue"]
+        self.humidity = dictionary["humidity"]
+        
+        self.changeHumThreshold(dictionary["humThreshold"])
+
+        self.on = dictionary["on"]
+
         

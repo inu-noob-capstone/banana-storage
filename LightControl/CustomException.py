@@ -30,5 +30,13 @@ class WrongBrightnessRange(Exception):
     def __str__(self):
         return self.message
 
+class WrongChlorophyllAmount(Exception):
+    def __init(self):
+        Exception.__init__(self)
+        self.message = "엽록소B 함량을 잘못 입력했습니다."
+
+    def __str__(self):
+        return self.message
+
     
         
