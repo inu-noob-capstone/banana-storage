@@ -21,7 +21,7 @@ def keyboardInput(lightSetting, waterSetting, keyboard):
 #데이터가 들어있는 setting 객체 내용을 출력하는 함수.
 def printSetting(lightSetting, waterSetting):   
     print()
-    print('현재 조도 : %dlux' % int(lightSetting.dict["currentLux"] * 1.15))
+    print('현재 조도 : %dlux' % int(lightSetting.dict["currentLux"]))
     print('현재 습도 : %d%%' % waterSetting.dict["humidity"])
     print()
     #time.sleep(0.7)

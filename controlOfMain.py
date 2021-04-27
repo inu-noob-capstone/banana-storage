@@ -11,39 +11,57 @@ def increaseLightIntensity(lightSetting, IP, username, lightname):
         if lightSetting.dict["lightStateShouldBe"] == False:
             lightSetting.dict["lightStateShouldBe"] = True
             commandResponse = LightControl.LightControl.lightOn(IP, username, lightname)
+            return True
 
         elif lightSetting.dict["bri"] < 254:
-            if (lightSetting.dict["bri"]<220 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
-                lightSetting.changeBrightness(lightSetting.dict["bri"]+1)
+            if (lightSetting.dict["bri"]<240 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
+                lightSetting.changeBrightness(lightSetting.dict["bri"]+2)
                 commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                return True
             else:
                 lightSetting.changeBrightness(lightSetting.dict["bri"]+1)
                 commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                return True
 
 #현재 lux가 과하면 빛 세기 감소 후 전구 끄기
 def decreaseLightIntensity(lightSetting, IP, username, lightname):
-    if (lightSetting.dict["goalLux"]+15) < lightSetting.dict["currentLux"]:
+    if (lightSetting.dict["goalLux"]+10) < lightSetting.dict["currentLux"]:
         if (lightSetting.dict["bri"]>25) and (lightSetting.dict["goalLux"] < lightSetting.dict["currentLux"]):
-            lightSetting.changeBrightness(lightSetting.dict["bri"]-1)
+            lightSetting.changeBrightness(lightSetting.dict["bri"]-2)
             commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+            return True
 
         elif ((lightSetting.dict["bri"]<25) and (lightSetting.dict["bri"]>1)) or lightSetting.dict["bri"]==25:
             lightSetting.changeBrightness(int(lightSetting.dict["bri"]-1))
             commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+            return True
 
         #밝기가 최소여도 여전히 lux가 과할 때, 전구 끄기.
         elif ((lightSetting.dict["bri"] == 1) or (lightSetting.dict["bri"] < 1)) and lightSetting.dict["lightStateShouldBe"] == True:
             lightSetting.dict["lightStateShouldBe"] = False
             commandResponse = LightControl.LightControl.lightOff(IP, username, lightname)
+            return True
+
+def updateLightColor(lightSetting, IP, username, lightname):
+    if lightSetting.dict["chlorophyll"] == "A":
+        commandResponse = LightControl.LightControl.changeColorTypeA(IP, username, lightname)
+    elif lightSetting.dict["chlorophyll"] == "B":
+        commandResponse = LightControl.LightControl.changeColorTypeB(IP, username, lightname)
+    elif lightSetting.dict["chlorophyll"] == "C":
+        commandResponse = LightControl.LightControl.changeColorTypeC(IP, username, lightname)
 
 #습도가 부족할 때, pump on
 def pumpOnWhenLowHumidity(waterSetting, pump):
     if waterSetting.dict["humThreshold"] > waterSetting.dict["humidity"]:
         waterSetting.dict["pumpStateShouldBe"] = True
         pump.PumpOn()
+        return True
 
 #습도가 충분하며, 아직 pump가 켜진 상태일 때, pump off
 def pumpOffWhenHighHumidity(waterSetting, pump):
     if (waterSetting.dict["humThreshold"] < waterSetting.dict["humidity"] or waterSetting.dict["humThreshold"] == waterSetting.dict["humidity"]) and waterSetting.dict["pumpStateShouldBe"] == True:
         waterSetting.dict["pumpStateShouldBe"] = False
         pump.PumpOff()
+        return True
+
+

@@ -1,6 +1,6 @@
 {
 	"adcValue": 0,
-	"humidity": 100,
+	"humidity": 17,
 	"humThreshold": 0,
 	"pumpStateShouldBe": false,
 	"allowingOfAUser": true

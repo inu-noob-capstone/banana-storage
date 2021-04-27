@@ -56,34 +56,34 @@ class LightControl:
         print('setColorToDefault 결과 :',r.text)
         return r.text
 
-    @trace
+    #@trace
     def changeColorTypeA(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.35'
         y = '0.1'
         payload = '{"xy":['+x+','+y+']}'
         r = requests.put(URL, data=payload)
-        print('changeColorTypeA 결과 :',r.text)
+        #print('changeColorTypeA 결과 :',r.text)
         return r.text
 
-    @trace
+    #@trace
     def changeColorTypeB(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.325'
         y = '0.175'
         payload = '{"xy":['+x+','+y+']}'
         r = requests.put(URL, data=payload)
-        print('changeColorTypeB 결과 :',r.text)
+        #print('changeColorTypeB 결과 :',r.text)
         return r.text
 
-    @trace
+    #@trace
     def changeColorTypeC(ip,username,lightname):
         URL = 'http://'+ip+'/api/'+username+'/lights/'+lightname+'/state'
         x = '0.3125'
         y = '0.2125'
         payload = '{"xy":['+x+','+y+']}'
         r = requests.put(URL, data=payload)
-        print('changeColorTypeC 결과 :',r.text)
+        #print('changeColorTypeC 결과 :',r.text)
         return r.text
 
     @trace
