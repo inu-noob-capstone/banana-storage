@@ -1,9 +1,12 @@
 class WaterSetting:
     def __init__(self):
-        self.adcValue = 0
-        self.humidity = 0
-        self.humThreshold = 0 #이거 보다 습도가 낮을 때, 모터 작동할 예정
-        self.on = False # 모터가 켜져 있는지 나타내는 flag. False일 때 꺼진 상태
+        self.dict = {
+            "adcValue" : 0,
+            "humidity" : 0,
+            "humThreshold" : 0, #이거 보다 습도가 낮을 때, 모터 작동할 예정
+            "pumpStateShouldBe" : False, #allowing 상태일 때, 이게 True면 pump가 작동한다.
+            "allowingOfAUser" : True
+            }
 
     def trace(func):
         def wrapper(self,x):
@@ -13,33 +16,15 @@ class WaterSetting:
 
     @trace
     def changeAdcValue(self,adcValue):
-        print("adcValue : {} -> {}" .format(self.adcValue, adcValue))
-        self.adcValue = adcValue
+        print("adcValue : {} -> {}" .format(self.dict["adcValue"], adcValue))
+        self.dict["adcValue"] = adcValue
 
     def changeHumidity(self, humidity):
-        print("저장된 습도 : {}% -> {}%" .format(self.humidity, humidity))
-        self.humidity = humidity
+        print("humidity : {} -> {}" .format(self.dict["humidity"], humidity))
+        self.dict["humidity"] = humidity
 
     def changeHumThreshold(self, humThreshold):
-        print("문턱 습도 : {}% -> {}%" .format(self.humThreshold, humThreshold))
-        self.humThreshold = humThreshold
-
-    def waterSettingToDict(self):
-        waterSettingByDict = dict()
-
-        waterSettingByDict["adcValue"] = self.adcValue
-        waterSettingByDict["humidity"] = self.humidity
-        waterSettingByDict["humThreshold"] = self.humThreshold
-        waterSettingByDict["on"] = self.on
-
-        return waterSettingByDict
-
-    def dictToWaterSetting(self, dictionary):
-        self.adcValue = dictionary["adcValue"]
-        self.humidity = dictionary["humidity"]
-        
-        self.changeHumThreshold(dictionary["humThreshold"])
-
-        self.on = dictionary["on"]
+        print("문턱 습도 : {}% -> {}%" .format(self.dict["humThreshold"], humThreshold))
+        self.dict["humThreshold"] = humThreshold
 
         

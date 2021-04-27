@@ -2,9 +2,10 @@
 	"x": 0.3249,
 	"y": 0.1747,
 	"ct": 170,
-	"bri": 1,
-	"goalLux": 250,
-	"currentLux": 37.254901960784316,
+	"bri": 111,
+	"goalLux": 500,
+	"currentLux": 72.54901960784314,
 	"chlorophyll": "B",
-	"on": false
+	"lightStateShouldBe": true,
+	"allowingOfAUser": true
 }
