@@ -11,6 +11,11 @@ from controlOfMain import *
 
 import RPi.GPIO as GPIO
 import spidev
+import os
+
+#before launch, At session(in your opening terminal), 'ulimit -n 999999'!!!!
+#this program needs many file I/O
+
 
 #브릿지의 IP 주소 알아오기.
 IP = GetIP.GetIP.findIP()
