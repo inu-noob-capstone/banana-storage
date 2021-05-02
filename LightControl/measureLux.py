@@ -69,7 +69,7 @@ class MeasureLux():
     return self.convertToNumber(data)
 
   def measureLux(self):
-        self.lux = self.readLight()
+        self.lux = int(self.readLight())
         #print("측정된 조도 : " + format(self.lux,'.2f') + " lx")
         #time.sleep(0.5)
         return self.lux
