@@ -1,0 +1,7 @@
+라즈베리파이 고정 IP : 192.168.219.110
+
+아파치 서버 가동 여부 확인
+systemctl status apache2
+
+보통 부팅 시 자동 작동하지만 작동 중이 아니라면,
+systemctl restart apache2로 재작동 가능

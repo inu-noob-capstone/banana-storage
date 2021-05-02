@@ -3,6 +3,7 @@
     package="com.example.leavemealoneapplication">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LeaveMeAloneApplication">
+        android:theme="@style/Theme.LeaveMeAloneApplication"
+        android:usesCleartextTraffic="true">
         <activity android:name=".Communication"></activity>
         <activity android:name=".LightManagement" />
         <activity android:name=".MoistureManagement" />

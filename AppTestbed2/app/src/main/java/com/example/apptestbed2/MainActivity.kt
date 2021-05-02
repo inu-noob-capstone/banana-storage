@@ -28,12 +28,14 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     var urlText = binding.editUrl.text.toString()
-                    if (!urlText.startsWith("https")) {
-                        urlText = "https://${urlText}"
-                    }
+                    //if (!urlText.startsWith("https")) {
+                    //    urlText = "https://${urlText}"
+                    //}
                     val url = URL(urlText)
                     val urlConnection = url.openConnection() as HttpURLConnection
                     urlConnection.requestMethod = "GET"
+
+                    Log.d("responseCode", "${urlConnection.responseCode}")
 
                     if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
                         val streamReader = InputStreamReader(urlConnection.inputStream)

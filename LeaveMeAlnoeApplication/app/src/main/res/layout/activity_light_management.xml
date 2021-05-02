@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lightTitle" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/currentLuxGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -55,7 +55,7 @@
         android:text="@string/mainLuxRange"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/currentLuxGoalText"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -69,7 +69,7 @@
         android:textColor="@color/black"
         android:textSize="27dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/currentLuxGoalText" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
