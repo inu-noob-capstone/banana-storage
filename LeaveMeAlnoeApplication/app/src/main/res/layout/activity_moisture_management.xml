@@ -95,17 +95,17 @@
         android:layout_marginTop="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:tbgCheckedButton="@+id/choice_a">
+        app:tbgCheckedButton="@+id/on">
 
         <com.nex3z.togglebuttongroup.button.CircularToggle
-            android:id="@+id/choice_a"
+            android:id="@+id/on"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="ON"
             android:textSize="30dp" />
 
         <com.nex3z.togglebuttongroup.button.CircularToggle
-            android:id="@+id/choice_b"
+            android:id="@+id/off"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="OFF"

@@ -111,7 +111,7 @@
         app:toggle_horizontalSpacing="30dp"> <!-- this attribute is from the underlying FlexboxLayout -->
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
-            android:id="@+id/btn1"
+            android:id="@+id/less"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             app:toggle_selectedBackgroundColor="#48D54D"
@@ -119,7 +119,7 @@
             tools:layout_editor_absoluteX="68dp" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
-            android:id="@+id/btn2"
+            android:id="@+id/normal"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             app:toggle_selectedBackgroundColor="#48D54D"
@@ -127,7 +127,7 @@
             tools:layout_editor_absoluteX="145dp" />
 
         <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
-            android:id="@+id/btn3"
+            android:id="@+id/lots"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             app:toggle_selectedBackgroundColor="#4DE653"
@@ -146,10 +146,10 @@
         android:background="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:tbgCheckedButton="@+id/choice_a">
+        app:tbgCheckedButton="@+id/on">
 
         <com.nex3z.togglebuttongroup.button.CircularToggle
-            android:id="@+id/choice_a"
+            android:id="@+id/on"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:text="ON"
@@ -157,7 +157,7 @@
             app:toggle_selectedBackgroundColor="#5E6FED" />
 
         <com.nex3z.togglebuttongroup.button.CircularToggle
-            android:id="@+id/choice_b"
+            android:id="@+id/off"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:text="OFF"

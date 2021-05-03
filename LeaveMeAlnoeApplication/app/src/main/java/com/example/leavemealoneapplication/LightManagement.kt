@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.IdRes
 import com.example.leavemealoneapplication.databinding.ActivityLightManagementBinding
 import com.example.leavemealoneapplication.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
@@ -15,6 +16,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
+import kotlin.text.Typography.less
 
 class LightManagement : AppCompatActivity() {
     val binding by lazy { ActivityLightManagementBinding.inflate(layoutInflater) }
@@ -68,10 +70,31 @@ class LightManagement : AppCompatActivity() {
             }
 
             var goalLux = sharedLight.getString("goalLux","0")
+            var chlorophyll = sharedLight.getString("chlorophyll", "A")
+            var allowingOfAUser = sharedLight.getString("allowingOfAUser", "true")
 
             withContext(Dispatchers.Main){
                 binding.currentLuxGoalText.text = "${goalLux}"+" Lux"
+
+                if (chlorophyll == "A"){
+                    binding.chlorophyllBButton.selectButton(binding.less.id)
+                }
+                else if (chlorophyll == "B"){
+                    binding.chlorophyllBButton.selectButton(binding.normal.id)
+                }
+                else{
+                    binding.chlorophyllBButton.selectButton(binding.lots.id)
+                }
+
+                if (allowingOfAUser == "true"){
+                    binding.lightOnOffToggleBtn.check(binding.on.id)
+                }
+                else{
+                    binding.lightOnOffToggleBtn.check(binding.off.id)
+                }
             }
+
+
         }
     }
 }
