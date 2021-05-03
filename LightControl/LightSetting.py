@@ -68,6 +68,11 @@ class LightSetting:
             self.dict["chlorophyll"] = chlorophyll
         else:
             raise CustomException.WrongChlorophyll
+
+    def changeAllowingOfAUser(self, allowingOfAUser):
+        print()
+        print('allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
+        self.dict["allowingOfAUser"] = allowingOfAUser
         
 
 if __name__=="__main__":
