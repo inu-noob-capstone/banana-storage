@@ -17,6 +17,16 @@ def keyboardInput(lightSetting, waterSetting, keyboard):
         lightSetting.changeChlorophyll(chlorophyll)
         saveSettingAsFile(lightSetting, waterSetting)
 
+    elif keyboard.is_pressed('o'):
+        allowingOfAUser = input('allowingOfAUser(전구 작동) 선택. 켜기:true, 끄기:false :: ')
+        if allowingOfAUser == "true":
+            allowingOfAUser = True
+        else:
+            allowingOfAUser = False
+        
+        lightSetting.changeAllowingOfAUser(allowingOfAUser)
+        saveSettingAsFile(lightSetting, waterSetting)
+
 
 #데이터가 들어있는 setting 객체 내용을 출력하는 함수.
 def printSetting(lightSetting, waterSetting):   

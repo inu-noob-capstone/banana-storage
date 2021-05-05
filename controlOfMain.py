@@ -7,40 +7,54 @@ from LightControl import *
 
 #현재 lux가 부족하면 전구를 켜고, 빛 세기 증가
 def increaseLightIntensity(lightSetting, IP, username, lightname):
-    if lightSetting.dict["goalLux"] > lightSetting.dict["currentLux"]:
-        if lightSetting.dict["lightStateShouldBe"] == False:
-            lightSetting.dict["lightStateShouldBe"] = True
-            commandResponse = LightControl.LightControl.lightOn(IP, username, lightname)
-            return True
+    if lightSetting.dict["allowingOfAUser"] == False:
+        LightControl.LightControl.lightOff(IP, username, lightname)
+        return False
+    else:
+        LightControl.LightControl.lightOn(IP, username, lightname)
+        
+        if lightSetting.dict["goalLux"] > lightSetting.dict["currentLux"]:
+            if lightSetting.dict["lightStateShouldBe"] == False:
+                lightSetting.dict["lightStateShouldBe"] = True
+                commandResponse = LightControl.LightControl.lightOn(IP, username, lightname)
+                return True
 
-        elif lightSetting.dict["bri"] < 254:
-            if (lightSetting.dict["bri"]<240 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
-                lightSetting.changeBrightness(lightSetting.dict["bri"]+2)
-                commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
-                return True
-            else:
-                lightSetting.changeBrightness(lightSetting.dict["bri"]+1)
-                commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
-                return True
+            elif lightSetting.dict["bri"] < 254:
+                if (lightSetting.dict["bri"]<240 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
+                    lightSetting.changeBrightness(lightSetting.dict["bri"]+2)
+                    commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                    return True
+                else:
+                    lightSetting.changeBrightness(lightSetting.dict["bri"]+1)
+                    commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                    return True
 
 #현재 lux가 과하면 빛 세기 감소 후 전구 끄기
 def decreaseLightIntensity(lightSetting, IP, username, lightname):
-    if (lightSetting.dict["goalLux"]+10) < lightSetting.dict["currentLux"]:
-        if (lightSetting.dict["bri"]>25) and (lightSetting.dict["goalLux"] < lightSetting.dict["currentLux"]):
-            lightSetting.changeBrightness(lightSetting.dict["bri"]-2)
-            commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
-            return True
+    if lightSetting.dict["allowingOfAUser"] == False:
+        LightControl.LightControl.lightOff(IP, username, lightname)
+        return False
+    else:
+        if (lightSetting.dict["goalLux"]+10) < lightSetting.dict["currentLux"]:
+            if (lightSetting.dict["bri"]>25) and (lightSetting.dict["goalLux"] < lightSetting.dict["currentLux"]):
+                LightControl.LightControl.lightOn(IP, username, lightname)
+                
+                lightSetting.changeBrightness(lightSetting.dict["bri"]-2)
+                commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                return True
 
-        elif ((lightSetting.dict["bri"]<25) and (lightSetting.dict["bri"]>1)) or lightSetting.dict["bri"]==25:
-            lightSetting.changeBrightness(int(lightSetting.dict["bri"]-1))
-            commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
-            return True
+            elif ((lightSetting.dict["bri"]<25) and (lightSetting.dict["bri"]>1)) or lightSetting.dict["bri"]==25:
+                LightControl.LightControl.lightOn(IP, username, lightname)
+                
+                lightSetting.changeBrightness(int(lightSetting.dict["bri"]-1))
+                commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
+                return True
 
-        #밝기가 최소여도 여전히 lux가 과할 때, 전구 끄기.
-        elif ((lightSetting.dict["bri"] == 1) or (lightSetting.dict["bri"] < 1)) and lightSetting.dict["lightStateShouldBe"] == True:
-            lightSetting.dict["lightStateShouldBe"] = False
-            commandResponse = LightControl.LightControl.lightOff(IP, username, lightname)
-            return True
+            #밝기가 최소여도 여전히 lux가 과할 때, 전구 끄기.
+            elif ((lightSetting.dict["bri"] == 1) or (lightSetting.dict["bri"] < 1)) and lightSetting.dict["lightStateShouldBe"] == True:
+                lightSetting.dict["lightStateShouldBe"] = False
+                commandResponse = LightControl.LightControl.lightOff(IP, username, lightname)
+                return True
 
 def updateLightColor(lightSetting, IP, username, lightname):
     if lightSetting.dict["chlorophyll"] == "A":
