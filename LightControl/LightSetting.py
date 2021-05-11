@@ -62,6 +62,10 @@ class LightSetting:
         print('goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
         self.dict["goalLux"] = lux
 
+    def changeGoalLux2(self, lux):
+        print(u'goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
+        self.dict["goalLux"] = lux
+
     def changeChlorophyll(self, chlorophyll):
         if chlorophyll == "A" or chlorophyll == "B" or chlorophyll == "C":
             print('chlorophyll : {} -> {}'.format(self.dict["chlorophyll"], chlorophyll))
@@ -69,11 +73,18 @@ class LightSetting:
         else:
             raise CustomException.WrongChlorophyll
 
+    def changeChlorophyll2(self, chlorophyll):
+        print(u'chlorophyll : {} -> {}'.format(self.dict["chlorophyll"], chlorophyll))
+        self.dict["chlorophyll"] = chlorophyll
+
     def changeAllowingOfAUser(self, allowingOfAUser):
         print()
         print('allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
         self.dict["allowingOfAUser"] = allowingOfAUser
-        
+
+    def changeAllowingOfAUser2(self, allowingOfAUser):
+        print(u'allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
+        self.dict["allowingOfAUser"] = allowingOfAUser
 
 if __name__=="__main__":
     lightSetting = LightSetting()

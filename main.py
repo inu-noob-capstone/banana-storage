@@ -8,10 +8,13 @@ from FileIO import *
 
 from methodForTest import *
 from controlOfMain import *
-
 import RPi.GPIO as GPIO
+
 import spidev
 import os
+#import MyServer1
+
+import threading
 
 #before launch, At session(in your opening terminal), 'ulimit -n 999999'!!!!
 #this program needs many file I/O
@@ -81,8 +84,11 @@ commandResponse = LightControl.LightControl.lightOn(IP, username, lightname)
 lightSetting.changeLightStateShouldBe(True)
 
 #최초 실행 시 setting '파일'이 존재하도록, setting '객체'의 값으로 파일 생성.
-saveSettingAsFile(lightSetting, waterSetting)    
+#saveSettingAsFile(lightSetting, waterSetting)    
+#위 문장은 파일 없을 때만 쓰자.
 
+#기존 파일을 설정으로 사용.
+readSettingFile(lightSetting, waterSetting)
 
 #전구나 모터 켜고 끄는 반복적 관리 동작
 while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r')
