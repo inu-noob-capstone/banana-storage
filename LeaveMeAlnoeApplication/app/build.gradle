@@ -62,5 +62,4 @@ dependencies {
 
     // Gson 용. raw JSON을 pretty JSON(보기 좋은 JSON 표기)으로 바꾸는 용도
     implementation 'com.google.code.gson:gson:2.8.6'
-
 }

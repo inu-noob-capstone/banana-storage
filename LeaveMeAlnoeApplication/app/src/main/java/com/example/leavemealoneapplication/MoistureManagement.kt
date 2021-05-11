@@ -69,15 +69,38 @@ class MoistureManagement : AppCompatActivity() {
             withContext(Dispatchers.Main){
                 binding.currentMoistureGoalAsPercent.text = "${humThreshold}"+"%"
 
-                /* 안돼네 싯팔.... 수분관리 컨트롤 켜고 끄기 불가.
                 if (allowingOfAUser == "true"){
                     binding.waterOnOffToggleBtn.check(binding.on.id)
                 }
                 else{
                     binding.waterOnOffToggleBtn.check(binding.off.id)
                 }
-                */
             }
+
+            binding.saveMoistureSetting.setOnClickListener {
+                if(binding.editThreshold.text.toString().length != 0){
+                    waterEditor.putString("humThreshold", binding.editThreshold.text.toString())
+                    waterEditor.apply()
+                    Log.d("waterUpdate","humThreshold : " + "${binding.editThreshold.text.toString()}")
+                }
+
+                if(binding.on.id == binding.waterOnOffToggleBtn.checkedId){
+                    waterEditor.putString("allowingOfAUser","true")
+                    waterEditor.apply()
+                    Log.d("waterUpdate", "allowingOfAUser : true")
+                } else if(binding.off.id == binding.waterOnOffToggleBtn.checkedId){
+                    waterEditor.putString("allowingOfAUser","false")
+                    waterEditor.apply()
+                    Log.d("waterUpdate","allowingOfAUser : false")
+                }
+
+                // 아래부터는 humThreshold 데이터 전송
+
+                var humThreshold = sharedWater.getString("humThreshold","0")
+
+                var waterUrlText = "http//192.168.219.110:8081/?humThreshold=" + "${humThreshold}"
+
+            } // saveSetting 버튼 OnClickListener 블록 끝
 
         }
     }

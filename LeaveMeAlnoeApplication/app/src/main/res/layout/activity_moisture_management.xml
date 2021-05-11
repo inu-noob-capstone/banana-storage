@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/currentMoistureGoalAsPercent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editThreshold"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -84,10 +84,10 @@
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editThreshold" />
 
     <com.nex3z.togglebuttongroup.SingleSelectToggleGroup
-        android:id="@+id/lightOnOffToggleBtn"
+        android:id="@+id/waterOnOffToggleBtn"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginStart="26dp"
@@ -119,12 +119,12 @@
         android:id="@+id/saveMoistureSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="32dp"
         android:text="설정 저장"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lightOnOffToggleBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/waterOnOffToggleBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

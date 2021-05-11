@@ -5,3 +5,6 @@ systemctl status apache2
 
 보통 부팅 시 자동 작동하지만 작동 중이 아니라면,
 systemctl restart apache2로 재작동 가능
+
+이제 nginx 쓰는 중이라 apache2 대신 이거 넣어야 함-> nginx 다시 지움. apache2 설치함.
+2021년 5월 11일 기록.
