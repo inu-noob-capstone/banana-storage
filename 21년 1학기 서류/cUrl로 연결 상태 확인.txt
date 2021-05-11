@@ -1,0 +1,4 @@
+다음은 curl을 이용한 HTTP 메소드 점검 사례이다.
+curl -v -X OPTIONS http://내주소
+
+자료 출처 : https://webhack.dynu.net/?idx=20161110.001&print=friendly

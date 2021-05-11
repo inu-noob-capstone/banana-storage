@@ -1,0 +1,4 @@
+print() 사용시 
+u""으로 출력해야 함. u""는 unicode string을 의미.
+
+ex) print(u"123")

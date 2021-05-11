@@ -1,0 +1,2 @@
+/usr/sbin/nginx -t 
+설정 바꾼 후 reload 전에 이거 해보면 문법 이상여부 판독 가능.
