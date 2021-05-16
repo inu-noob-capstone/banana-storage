@@ -27,4 +27,19 @@ class WaterSetting:
         print("문턱 습도 : {}% -> {}%" .format(self.dict["humThreshold"], humThreshold))
         self.dict["humThreshold"] = humThreshold
 
+    def changeHumThreshold2(self, humThreshold):
+        print(u"문턱 습도 : {}% -> {}%" .format(self.dict["humThreshold"], humThreshold))
+        self.dict["humThreshold"] = humThreshold
+
+    def changeAllowingOfAUser(self, allowingOfAUser):
+        print("allowingOfAUser : {} -> {}" .format(self.dict["allowingOfAUser"],
+                                                   allowingOfAUser))
+        self.dict["allowingOfAUser"] = allowingOfAUser
+
+    def changeAllowingOfAUser2(self, allowingOfAUser):
+        print(u"allowingOfAUser : {} -> {}" .format(self.dict["allowingOfAUser"],
+                                                   allowingOfAUser))
+        self.dict["allowingOfAUser"] = allowingOfAUser
+              
+
         

@@ -34,6 +34,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             s = self.path
             print(parse_qs(s[2:]))
             dict_a = parse_qs(s[2:])
+            
             goalLux = int(dict_a["goalLux"][0])
             print(goalLux)
 
@@ -42,11 +43,21 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
             saveSettingAsFile(lightSetting, waterSetting)
 
+            while True:
+                readSettingFile(lightSetting, waterSetting)
+
+                if lightSetting.dict["goalLux"] == goalLux:
+                    break
+                else:
+                    lightSetting.changeGoalLux3(goalLux)
+                    saveSettingAsFile(lightSetting, waterSetting)
+
         if(self.path[2:13] == "chlorophyll"):
             #Query문이 ?chlorophyll='A'일 때
             s = self.path
             print(parse_qs(s[2:]))
             dict_a = parse_qs(s[2:])
+            
             chlorophyll = dict_a["chlorophyll"][0]
             print(chlorophyll)
 
@@ -55,21 +66,48 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
             saveSettingAsFile(lightSetting, waterSetting)
 
-        if(self.path[2:17] == "allowingOfAUser"):
-            #Query문이 ?allowingOfAUser=true일 때
+        if(self.path[2:17] == "allowingOfLight"):
+            #Query문이 ?allowingOfLight=true일 때
             s = self.path
             print(parse_qs(s[2:]))
             dict_a = parse_qs(s[2:])
-            allowingOfAUser = (dict_a["allowingOfAUser"][0]) == 'true'
-            print(allowingOfAUser)
+
+            allowingOfLight = (dict_a["allowingOfLight"][0]) == 'true'
+            print(allowingOfLight)
 
             readSettingFile(lightSetting, waterSetting)
-            lightSetting.changeAllowingOfAUser2(allowingOfAUser)
+            lightSetting.changeAllowingOfAUser2(allowingOfLight)
 
             saveSettingAsFile(lightSetting, waterSetting)
 
-        
-        
+        if(self.path[2:14] == "humThreshold"):
+            #Query문이 ?humThreshold=0일 때
+            s = self.path
+            print(parse_qs(s[2:]))
+            dict_a = parse_qs(s[2:])
+
+            humThreshold = int(dict_a["humThreshold"][0])
+            print(humThreshold)
+
+            readSettingFile(lightSetting, waterSetting)
+            waterSetting.changeHumThreshold2(humThreshold)
+
+            saveSettingAsFile(lightSetting, waterSetting)
+
+        if(self.path[2:16] == "allowingOfPump"):
+            #Query문이 ?allowingOfPump=true일 때
+            s = self.path
+            print(parse_qs(s[2:]))
+            dict_a = parse_qs(s[2:])
+
+            allowingOfPump = dict_a["allowingOfPump"][0] == 'true'
+            print(allowingOfPump)
+
+            readSettingFile(lightSetting, waterSetting)
+            waterSetting.changeAllowingOfAUser2(allowingOfPump)
+            
+            saveSettingAsFile(lightSetting, waterSetting)
+            
         return None
 
 

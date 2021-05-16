@@ -66,6 +66,11 @@ class LightSetting:
         print(u'goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
         self.dict["goalLux"] = lux
 
+    def changeGoalLux3(self, lux):
+        print(u'앱에서 받아온 게 저장이 안됀 거 같아서 재저장')
+        print(u'goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
+        self.dict["goalLux"] = lux
+
     def changeChlorophyll(self, chlorophyll):
         if chlorophyll == "A" or chlorophyll == "B" or chlorophyll == "C":
             print('chlorophyll : {} -> {}'.format(self.dict["chlorophyll"], chlorophyll))
