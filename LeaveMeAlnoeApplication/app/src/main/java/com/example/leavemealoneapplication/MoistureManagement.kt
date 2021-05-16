@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.leavemealoneapplication.databinding.ActivityLightManagementBinding
 import com.example.leavemealoneapplication.databinding.ActivityMoistureManagementBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -25,7 +22,7 @@ class MoistureManagement : AppCompatActivity() {
         val sharedWater = getSharedPreferences("waterSetting", Context.MODE_PRIVATE)
         val waterEditor = sharedWater.edit()
 
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
             var waterUrlText = "http://192.168.219.110/waterSetting.json"
             var waterUrl = URL(waterUrlText)
 
@@ -37,9 +34,9 @@ class MoistureManagement : AppCompatActivity() {
             var waterBuffered = BufferedReader(InputStreamReader(waterInputStream, "UTF-8"))
             var waterContent = waterBuffered.readText()
 
-            Log.d("waterResponse", "Size: "+waterContent.length)
+            Log.d("waterResponse", "Size: " + waterContent.length)
 
-            while(true) {
+            while (true) {
                 if ((waterContent != null) && (waterContent.length != 0)) {
                     var waterJson = JSONObject(waterContent)
 
@@ -48,12 +45,11 @@ class MoistureManagement : AppCompatActivity() {
                     waterEditor.apply()
 
                     var allowingOfAUser = "${waterJson.get("allowingOfAUser")}"
-                    waterEditor.putString("allowingOfAUser","${allowingOfAUser}")
+                    waterEditor.putString("allowingOfAUser", "${allowingOfAUser}")
                     waterEditor.apply()
 
                     break
-                }
-                else{
+                } else {
                     waterUrlConnection.disconnect()
                     waterBuffered.close()
 
@@ -63,21 +59,23 @@ class MoistureManagement : AppCompatActivity() {
                 }
             }
 
-            var humThreshold = sharedWater.getString("humThreshold","0")
+            var humThreshold = sharedWater.getString("humThreshold", "0")
             var allowingOfAUser = sharedWater.getString("allowingOfAUser", "true")
 
-            withContext(Dispatchers.Main){
-                binding.currentMoistureGoalAsPercent.text = "${humThreshold}"+"%"
+            withContext(Dispatchers.Main) {
+                binding.currentMoistureGoalAsPercent.text = "${humThreshold}" + "%"
 
-                if (allowingOfAUser == "true"){
+                if (allowingOfAUser == "true") {
                     binding.waterOnOffToggleBtn.check(binding.on.id)
-                }
-                else{
+                } else {
                     binding.waterOnOffToggleBtn.check(binding.off.id)
                 }
             }
+        } // 서버에서 데이터를 읽어오는 데 필요한 코루틴 블록 끝.
 
             binding.saveMoistureSetting.setOnClickListener {
+                // 이하의 if문은 설정 저장 버튼을 누를 시, 이를 휴대폰에 파일 데이터로 저장하는 과정.
+
                 if(binding.editThreshold.text.toString().length != 0){
                     waterEditor.putString("humThreshold", binding.editThreshold.text.toString())
                     waterEditor.apply()
@@ -96,12 +94,107 @@ class MoistureManagement : AppCompatActivity() {
 
                 // 아래부터는 humThreshold 데이터 전송
 
-                var humThreshold = sharedWater.getString("humThreshold","0")
+                while(true) {
 
-                var waterUrlText = "http//192.168.219.110:8081/?humThreshold=" + "${humThreshold}"
+                    var humThreshold = sharedWater.getString("humThreshold", "0")
+
+                    var waterUrlText =
+                        "http://192.168.219.110:8081/?humThreshold=" + "${humThreshold}"
+                    var waterUrl = URL(waterUrlText)
+
+                    var waterURLConnection = waterUrl.openConnection() as HttpURLConnection
+                    waterURLConnection.requestMethod = "GET"
+                    waterURLConnection.setRequestProperty(
+                        "Content-Type",
+                        "application/json; charset=UTF-8"
+                    )
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        if (waterURLConnection.responseCode == HttpURLConnection.HTTP_OK) {
+
+                            CoroutineScope(Dispatchers.IO).launch {
+                                var waterInputStream = waterURLConnection.getInputStream()
+                                var waterBuffered =
+                                    BufferedReader(InputStreamReader(waterInputStream, "UTF-8"))
+                                var waterContent = waterBuffered.readText()
+
+                                while (true) {
+                                    if ((waterContent != null) && (waterContent.length != 0)) {
+                                        break
+                                    } else {
+                                        waterURLConnection.disconnect()
+                                        waterBuffered.close()
+
+                                        waterInputStream = waterURLConnection.inputStream
+                                        waterBuffered =
+                                            BufferedReader(
+                                                InputStreamReader(
+                                                    waterInputStream,
+                                                    "UTF-8"
+                                                )
+                                            )
+                                        waterContent = waterBuffered.readText()
+                                    }
+                                }
+                            }// 코루틴 블록 끝.
+
+                        } // ResponseCode 확인하는 if문 블록 끝.
+                    } //코루틴 블록 종료 2
+                    break
+
+                }// while(true) 블록 종료
+
+                //아래는 allowingOfPump (펌프 강제로 멈추기) 데이터 전송
+
+                while(true) {
+
+                    var allowingOfPump = sharedWater.getString("allowingOfAUser", "true")
+
+                    var waterUrlText =
+                        "http://192.168.219.110:8081/?allowingOfPump=" + "${allowingOfPump}"
+                    var waterUrl = URL(waterUrlText)
+
+                    var waterURLConnection = waterUrl.openConnection() as HttpURLConnection
+                    waterURLConnection.requestMethod = "GET"
+                    waterURLConnection.setRequestProperty("Content-Type",
+                        "application/json; charset=UTF-8")
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        if (waterURLConnection.responseCode == HttpURLConnection.HTTP_OK) {
+                            CoroutineScope(Dispatchers.IO).launch {
+                                var waterInputStream = waterURLConnection.inputStream
+                                var waterBuffered =
+                                    BufferedReader(InputStreamReader(waterInputStream, "UTF-8"))
+                                var waterContent = waterBuffered.readText()
+
+                                while (true) {
+                                    if ((waterContent != null) && (waterContent.length != 0))
+                                        break
+                                    else {
+                                        waterURLConnection.disconnect()
+                                        waterBuffered.close()
+
+                                        waterInputStream = waterURLConnection.inputStream
+                                        waterBuffered =
+                                            BufferedReader(
+                                                InputStreamReader(
+                                                    waterInputStream,
+                                                    "UTF-8"
+                                                )
+                                            )
+                                        waterContent = waterBuffered.readText()
+                                    }
+                                }
+                            } // 코루틴 블록 종료
+
+                        }// ResponseCode를 확인하는 if문 블록 끝
+                    } // 코루틴 블록 종료2
+                    break
+                }// while(true) 블록 종료
+
+                finish()
 
             } // saveSetting 버튼 OnClickListener 블록 끝
 
-        }
-    }
-}
+        } // OnCreate 블록 끝
+    } // 액티비티 클래스 블록 끝
