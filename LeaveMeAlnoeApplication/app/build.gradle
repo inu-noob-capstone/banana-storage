@@ -62,4 +62,11 @@ dependencies {
 
     // Gson 용. raw JSON을 pretty JSON(보기 좋은 JSON 표기)으로 바꾸는 용도
     implementation 'com.google.code.gson:gson:2.8.6'
+
+
+    // HTTP Null 접근 오류 방지용으로 넣어봄.
+    implementation 'com.liulishuo.okdownload:okdownload:1.0.5'
+    implementation 'com.liulishuo.okdownload:okhttp:1.0.5'
+    implementation 'com.liulishuo.okdownload:okhttp:1.0.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
 }

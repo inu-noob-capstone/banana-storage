@@ -97,9 +97,10 @@ class LightManagement : AppCompatActivity() {
                     binding.lightOnOffToggleBtn.check(binding.off.id)
                 }
             }
-        }
+        } // 서버에서 데이터 읽어오는데 필요한 코루틴 블록 끝.
 
         binding.saveSetting.setOnClickListener {
+            // 이하 if문은 설정 저장 버튼을 누를 시, 이를 휴대폰에 파일 데이터로 저장하는 과정
 
             if (binding.editGoalLux.text.toString().length != 0) {
                 lightEditor.putString("goalLux", binding.editGoalLux.text.toString())
@@ -133,102 +134,145 @@ class LightManagement : AppCompatActivity() {
 
             // 아래부턴 goalLux 데이터 전송
 
-            var goalLux = sharedLight.getString("goalLux", "0")
+            while(true) {
 
-            var lightUrlText = "http://192.168.219.110:8081/?goalLux=" + "${goalLux}"
-            var lightUrl = URL(lightUrlText)
+                var goalLux = sharedLight.getString("goalLux", "0")
 
-            var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
-            lightUrlConnection.requestMethod = "GET"
-            lightUrlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                var lightUrlText = "http://192.168.219.110:8081/?goalLux=" + "${goalLux}"
+                var lightUrl = URL(lightUrlText)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                while(true) {
-                    var lightInputStream = lightUrlConnection.getInputStream()
-                    var lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                    var lightContent = lightBuffered.readText()
+                var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
+                lightUrlConnection.requestMethod = "GET"
+                lightUrlConnection.setRequestProperty(
+                    "Content-Type",
+                    "application/json; charset=UTF-8"
+                )
 
-                    if ((lightContent != null) && (lightContent.length != 0)) {
-                        break
-                    } else {
-                        lightUrlConnection.disconnect()
-                        lightBuffered.close()
+                CoroutineScope(Dispatchers.IO).launch {
+                    if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
 
-                        lightInputStream = lightUrlConnection.getInputStream()
-                        lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                        lightContent = lightBuffered.readText()
-                    }
-                }
-            }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            var lightInputStream = lightUrlConnection.getInputStream()
+                            var lightBuffered =
+                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                            var lightContent = lightBuffered.readText()
+
+                            while (true) {
+                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
+                                    break
+                                } else {
+                                    lightUrlConnection.disconnect()
+                                    lightBuffered.close()
+
+                                    lightInputStream = lightUrlConnection.getInputStream()
+                                    lightBuffered =
+                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                                    lightContent = lightBuffered.readText()
+                                }
+                            }
+                        } // 코루틴 블록 1 종료.
+
+                    } // ResponseCode를 확인하는 if문 블록 끝.
+                } // 코루틴 블록 2 종료.
+                break
+
+            } // while(true) 블록 종료
 
             // 아래부터 엽록소 데이터 전송
 
-            var chlorophyll = sharedLight.getString("chlorophyll","A")
+            while (true) {
 
-            lightUrlText = "http://192.168.219.110:8081/?chlorophyll=" + "${chlorophyll}"
-            lightUrl = URL(lightUrlText)
+                var chlorophyll = sharedLight.getString("chlorophyll", "A")
 
-            lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
-            lightUrlConnection.requestMethod = "GET"
-            lightUrlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                var lightUrlText = "http://192.168.219.110:8081/?chlorophyll=" + "${chlorophyll}"
+                var lightUrl = URL(lightUrlText)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                while(true) {
-                    var lightInputStream = lightUrlConnection.getInputStream()
-                    var lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                    var lightContent = lightBuffered.readText()
+                var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
+                lightUrlConnection.requestMethod = "GET"
+                lightUrlConnection.setRequestProperty(
+                    "Content-Type",
+                    "application/json; charset=UTF-8"
+                )
 
-                    if ((lightContent != null) && (lightContent.length != 0)){
-                        break
-                    } else{
-                        lightUrlConnection.disconnect()
-                        lightBuffered.close()
+                CoroutineScope(Dispatchers.IO).launch {
+                    if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
 
-                        lightInputStream = lightUrlConnection.getInputStream()
-                        lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                        lightContent = lightBuffered.readText()
-                    }
-                }
-            }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            var lightInputStream = lightUrlConnection.getInputStream()
+                            var lightBuffered =
+                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                            var lightContent = lightBuffered.readText()
+
+                            while (true) {
+                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
+                                    break
+                                } else {
+                                    lightUrlConnection.disconnect()
+                                    lightBuffered.close()
+
+                                    lightInputStream = lightUrlConnection.getInputStream()
+                                    lightBuffered =
+                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                                    lightContent = lightBuffered.readText()
+                                }
+                            }
+                        } // 코루틴 블록 1 종료.
+
+                    } // responseCode 확인하는 if문 블록 끝.
+                } // 코루틴 블록 2 종료.
+                break
+
+            } // while(true) 블록 종료
 
             // 아래부터 allowingOfAUser(전구 강제로 끄기) 데이터 전송
 
-            var allowingOfAUser = sharedLight.getString("allowingOfAUser","true")
+            while (true) {
 
-            lightUrlText = "http://192.168.219.110:8081/?allowingOfAUser=" + "${allowingOfAUser}"
-            lightUrl = URL(lightUrlText)
+                var allowingOfLight = sharedLight.getString("allowingOfAUser", "true")
 
-            lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
-            lightUrlConnection.requestMethod = "GET"
-            lightUrlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8")
+                var lightUrlText =
+                    "http://192.168.219.110:8081/?allowingOfLight=" + "${allowingOfLight}"
+                var lightUrl = URL(lightUrlText)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                while(true) {
-                    var lightInputStream = lightUrlConnection.getInputStream()
-                    var lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                    var lightContent = lightBuffered.readText()
+                var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
+                lightUrlConnection.requestMethod = "GET"
+                lightUrlConnection.setRequestProperty(
+                    "Content-Type",
+                    "application/json; charset=UTF-8"
+                )
 
-                    if ((lightContent != null) && (lightContent.length != 0)){
-                        break
-                    } else{
-                        lightUrlConnection.disconnect()
-                        lightBuffered.close()
+                CoroutineScope(Dispatchers.IO).launch {
+                    if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
 
-                        lightInputStream = lightUrlConnection.getInputStream()
-                        lightBuffered = BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                        lightContent = lightBuffered.readText()
-                    }
-                }
-            }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            var lightInputStream = lightUrlConnection.getInputStream()
+                            var lightBuffered =
+                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                            var lightContent = lightBuffered.readText()
+
+                            while (true) {
+                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
+                                    break
+                                } else {
+                                    lightUrlConnection.disconnect()
+                                    lightBuffered.close()
+
+                                    lightInputStream = lightUrlConnection.getInputStream()
+                                    lightBuffered =
+                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
+                                    lightContent = lightBuffered.readText()
+                                }
+                            }
+                        } // 코루틴 블록 종료 1.
+
+                    } // responseCode를 확인하는 if문 블록 끝
+                } // 코루틴 블록 종료 2.
+                break
+            } // while(true) 블록 종료.
 
             finish() // 현 액티비티 종료
-            //val MainIntent = Intent(this, MainActivity::class.java)
-            //startActivity(MainIntent)
-            //finish()
-            //recreate()
-            //recreate()
 
         } // 버튼 onClickListener 블록 끝
 
-    }
-}
+    } // OnCreate 블록 끝
+} // 액티비티 클래스 블록 끝.
