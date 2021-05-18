@@ -8,11 +8,15 @@ from LightControl import LightSetting
 from WaterControl import WaterSetting
 from threading import Lock
 
+import socket, pickle
+from multiprocessing import Process, Lock
+
 #8081포트 이용
 #범용
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
+        
         parsed_path = urlparse(self.path)
         message_parts=['query:{0:s}'.format(parsed_path.query)]
 
@@ -27,7 +31,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         lightSetting = LightSetting.LightSetting()
 
         global waterSetting
-        waterSetting = WaterSetting.WaterSetting()
+        waterSetting = WaterSetting.WaterSetting() 
         
         if(self.path[2:9] == "goalLux"):
             #Query문이 ?goalLux='숫자'일 때
@@ -37,20 +41,11 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             
             goalLux = int(dict_a["goalLux"][0])
             print(goalLux)
-
+            
             readSettingFile(lightSetting, waterSetting)
             lightSetting.changeGoalLux2(goalLux)
 
             saveSettingAsFile(lightSetting, waterSetting)
-
-            while True:
-                readSettingFile(lightSetting, waterSetting)
-
-                if lightSetting.dict["goalLux"] == goalLux:
-                    break
-                else:
-                    lightSetting.changeGoalLux3(goalLux)
-                    saveSettingAsFile(lightSetting, waterSetting)
 
         if(self.path[2:13] == "chlorophyll"):
             #Query문이 ?chlorophyll='A'일 때
@@ -106,7 +101,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             readSettingFile(lightSetting, waterSetting)
             waterSetting.changeAllowingOfAUser2(allowingOfPump)
             
-            saveSettingAsFile(lightSetting, waterSetting)
+            saveSettingAsFile(lightSetting, waterSetting)                    
             
         return None
 

@@ -21,13 +21,14 @@ def increaseLightIntensity(lightSetting, IP, username, lightname):
 
             elif lightSetting.dict["bri"] < 254:
                 if (lightSetting.dict["bri"]<240 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
-                    lightSetting.changeBrightness(lightSetting.dict["bri"]+2)
+                    lightSetting.changeBrightness(lightSetting.dict["bri"]+4)
                     commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
                     return True
                 else:
-                    lightSetting.changeBrightness(lightSetting.dict["bri"]+1)
+                    lightSetting.changeBrightness(lightSetting.dict["bri"]+2)
                     commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
                     return True
+        return False
 
 #현재 lux가 과하면 빛 세기 감소 후 전구 끄기
 def decreaseLightIntensity(lightSetting, IP, username, lightname):
@@ -39,14 +40,14 @@ def decreaseLightIntensity(lightSetting, IP, username, lightname):
             if (lightSetting.dict["bri"]>25) and (lightSetting.dict["goalLux"] < lightSetting.dict["currentLux"]):
                 LightControl.LightControl.lightOn(IP, username, lightname)
                 
-                lightSetting.changeBrightness(lightSetting.dict["bri"]-2)
+                lightSetting.changeBrightness(lightSetting.dict["bri"]-4)
                 commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
                 return True
 
             elif ((lightSetting.dict["bri"]<25) and (lightSetting.dict["bri"]>1)) or lightSetting.dict["bri"]==25:
                 LightControl.LightControl.lightOn(IP, username, lightname)
                 
-                lightSetting.changeBrightness(int(lightSetting.dict["bri"]-1))
+                lightSetting.changeBrightness(int(lightSetting.dict["bri"]-2))
                 commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
                 return True
 
@@ -55,6 +56,7 @@ def decreaseLightIntensity(lightSetting, IP, username, lightname):
                 lightSetting.dict["lightStateShouldBe"] = False
                 commandResponse = LightControl.LightControl.lightOff(IP, username, lightname)
                 return True
+        return False
 
 def updateLightColor(lightSetting, IP, username, lightname):
     if lightSetting.dict["chlorophyll"] == "A":
@@ -66,16 +68,26 @@ def updateLightColor(lightSetting, IP, username, lightname):
 
 #습도가 부족할 때, pump on
 def pumpOnWhenLowHumidity(waterSetting, pump):
-    if waterSetting.dict["humThreshold"] > waterSetting.dict["humidity"]:
-        waterSetting.dict["pumpStateShouldBe"] = True
-        pump.PumpOn()
-        return True
+    if waterSetting.dict["allowingOfAUser"] == False:
+        pump.PumpOff()
+        return False
+    else:
+        if waterSetting.dict["humThreshold"] > waterSetting.dict["humidity"]:
+            waterSetting.dict["pumpStateShouldBe"] = True
+            pump.PumpOn()
+            return True
+        return False
 
 #습도가 충분하며, 아직 pump가 켜진 상태일 때, pump off
 def pumpOffWhenHighHumidity(waterSetting, pump):
-    if (waterSetting.dict["humThreshold"] < waterSetting.dict["humidity"] or waterSetting.dict["humThreshold"] == waterSetting.dict["humidity"]) and waterSetting.dict["pumpStateShouldBe"] == True:
-        waterSetting.dict["pumpStateShouldBe"] = False
+    if waterSetting.dict["allowingOfAUser"] == False:
         pump.PumpOff()
-        return True
+        return False
+    else:
+        if (waterSetting.dict["humThreshold"] < waterSetting.dict["humidity"] or waterSetting.dict["humThreshold"] == waterSetting.dict["humidity"]) and waterSetting.dict["pumpStateShouldBe"] == True:
+            waterSetting.dict["pumpStateShouldBe"] = False
+            pump.PumpOff()
+            return True
+        return False
 
 

@@ -67,8 +67,7 @@ class LightSetting:
         self.dict["goalLux"] = lux
 
     def changeGoalLux3(self, lux):
-        print(u'앱에서 받아온 게 저장이 안됀 거 같아서 재저장')
-        print(u'goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
+        print(u'retry goalLux : {} -> {}'.format(self.dict["goalLux"], lux))
         self.dict["goalLux"] = lux
 
     def changeChlorophyll(self, chlorophyll):
@@ -82,6 +81,10 @@ class LightSetting:
         print(u'chlorophyll : {} -> {}'.format(self.dict["chlorophyll"], chlorophyll))
         self.dict["chlorophyll"] = chlorophyll
 
+    def changeChlorophyll3(self, chlorophyll):
+        print(u'retry chlorophyll : {} -> {}'.format(self.dict["chlorophyll"], chlorophyll))
+        self.dict["chlorophyll"] = chlorophyll
+
     def changeAllowingOfAUser(self, allowingOfAUser):
         print()
         print('allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
@@ -89,6 +92,10 @@ class LightSetting:
 
     def changeAllowingOfAUser2(self, allowingOfAUser):
         print(u'allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
+        self.dict["allowingOfAUser"] = allowingOfAUser
+
+    def changeAllowingOfAUser3(self, allowingOfAUser):
+        print(u'retry allowingOfAUser : {} -> {}'.format(self.dict["allowingOfAUser"], allowingOfAUser))
         self.dict["allowingOfAUser"] = allowingOfAUser
 
 if __name__=="__main__":

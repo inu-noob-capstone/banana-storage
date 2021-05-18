@@ -12,7 +12,8 @@ import RPi.GPIO as GPIO
 
 import spidev
 import os
-#import MyServer1
+
+import socket, pickle
 
 import threading
 
@@ -97,6 +98,8 @@ while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r'
         stop_loop = True
         break
 
+    time.sleep(0.25)
+
     #새 목표치를 키보드로 입력 받아, 파일에'만' 쓰는 method.
     keyboardInput(lightSetting, waterSetting, keyboard)
 
@@ -114,6 +117,7 @@ while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r'
     printSetting(lightSetting, waterSetting)
         
     #현재 lux가 부족하면 전구를 켜고, 빛 세기 증가. 그 과정에서 setting 객체 갱신.
+    #increaseLightIntensity(lightSetting, IP, username, lightname)
     if increaseLightIntensity(lightSetting, IP, username, lightname):
         #setting 객체가 갱신됐을 때만, 객체를 토대로 파일도 갱신. 갱신 여부는 위의
         #조건문이 판단. increaseLightIntensity 함수는 전구 설정을 바꿨을 대 True 반환
@@ -121,6 +125,7 @@ while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r'
         saveSettingAsFile(lightSetting, waterSetting)
     
     #현재 lux가 과하면, 빛 세기 감소 후 전구 끄기
+    #decreaseLightIntensity(lightSetting, IP, username, lightname)
     #밝기가 최소여도 여전히 lux가 과할 때, 전구 끄기. 그 과정에서 setting 객체 갱신.
     if decreaseLightIntensity(lightSetting, IP, username, lightname):
         #setting 객체가 갱신됐을 때, 객체를 토대로 파일도 갱신.
@@ -130,11 +135,13 @@ while True: #f1 = open('/home/ubuntu/바탕화면/Capstone Git/LightControl','r'
     updateLightColor(lightSetting, IP, username, lightname)
     
     #습도가 부족할 때, pump on. 그 과정에서 setting 객체 갱신.
+    #pumpOnWhenLowHumidity(waterSetting, pump)
     if pumpOnWhenLowHumidity(waterSetting, pump):
         #setting 객체가 갱신됐을 때, 객체를 토대로 파일도 갱신.
         saveSettingAsFile(lightSetting, waterSetting)
 
     #습도가 충분하며, 아직 pump가 켜진 상태일 때, pump off. 그 과정에서 setting 객체 갱신. 
+    #pumpOffWhenHighHumidity(waterSetting, pump)
     if pumpOffWhenHighHumidity(waterSetting, pump):
         #setting 객체가 갱신됐을 때, 객체를 토대로 파일도 갱신.
         saveSettingAsFile(lightSetting, waterSetting)
