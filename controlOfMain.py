@@ -19,7 +19,7 @@ def increaseLightIntensity(lightSetting, IP, username, lightname):
                 commandResponse = LightControl.LightControl.lightOn(IP, username, lightname)
                 return True
 
-            elif lightSetting.dict["bri"] < 254:
+            elif lightSetting.dict["bri"] < 250:
                 if (lightSetting.dict["bri"]<240 and lightSetting.dict["bri"] > 10) and ((lightSetting.dict["goalLux"]) > (lightSetting.dict["currentLux"]+10)):
                     lightSetting.changeBrightness(lightSetting.dict["bri"]+4)
                     commandResponse = LightControl.LightControl.changeBrightness(IP,username,lightname,lightSetting.dict["bri"])
