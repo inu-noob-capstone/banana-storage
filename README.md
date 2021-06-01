@@ -28,13 +28,13 @@ When the user decides the desired plant condition, it will maintain that.
 <br></br>
 
 
-[![Leave Me Alone 영상](<img src="https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EB%B0%8F%20%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EC%A0%9C%EC%9E%91%EC%9A%A9%20%EC%9D%B4%EB%AF%B8%EC%A7%80/2021%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88%EC%A7%91_%ED%8F%AC%EC%8A%A4%ED%84%B0_30.jpg" width=430 height="590">)](https://youtu.be/XAXe4J__5RA)
+<img src="https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EB%B0%8F%20%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EC%A0%9C%EC%9E%91%EC%9A%A9%20%EC%9D%B4%EB%AF%B8%EC%A7%80/2021%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88%EC%A7%91_%ED%8F%AC%EC%8A%A4%ED%84%B0_30.jpg" width=430 height="590">
 
 -------------------------------------------------------------------------------
 ### 소개 영상
 **Introduction Video**
 <br></br>
-<img width="400" alt="발표 영상 표지" src="https://user-images.githubusercontent.com/57119957/120290362-3ebcb100-c2fd-11eb-9af5-762ad47f4291.png">
+[![Leave Me Alnoe 영상](<img width="400" alt="발표 영상 표지" src="https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EB%B0%8F%20%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EC%A0%9C%EC%9E%91%EC%9A%A9%20%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%B0%9C%ED%91%9C%20%EC%98%81%EC%83%81%20%ED%91%9C%EC%A7%80.png">)](https://youtu.be/XAXe4J__5RA?t=0)
 -------------------------------------------------------------------------------
 
 ### 프로젝트 참여자 목록
