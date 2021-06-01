@@ -20,6 +20,7 @@ Ex-members quit at Februray, 2021
 
 ---------------------------------------------------------
 멤버들의 이메일, GitHub 유저 네임
+
 Mail address and username of each one.
 
 현 멤버들 것
