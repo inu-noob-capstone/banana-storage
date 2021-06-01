@@ -74,7 +74,7 @@ https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a
 ----------------------------------------------------------
 
 
-~~개드립란~~
+~~헛소리 적는 곳~~
 
 ~~This is storage for the project. And We call this project as Capstone Design. I hope some Code Monkeys will be here for some banana, and help us.~~
 
