@@ -23,7 +23,7 @@ This storage is made for that.
 사용자가 원하는 식물 상태를 정하면 이를 유지한다.
 
 
-Automatic flowerpot for growing plant
+Automatic flowerpot for growing plant.
 When the user decides the desired plant condition, it will maintain that.
 <br></br>
 
