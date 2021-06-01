@@ -7,7 +7,8 @@ We are CE students of INU(Incheon National University).
 
 -----------------------------------------------------------
 
-프로젝트 참여자 목록
+**프로젝트 참여자 목록**
+**List of participants**
 <br></br>
 
 현 멤버 : 권민수, 김도균 
@@ -25,9 +26,9 @@ Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won
 Ex-members quit at Februray, 2021     
 
 ---------------------------------------------------------
-멤버들의 이메일, GitHub 유저 네임
+**멤버들의 이메일, GitHub 유저 네임**
 
-Mail address and username of each one.
+**Mail address and username of each one.**
 <br></br>
 
 현 멤버들 것
@@ -56,7 +57,9 @@ Ex-Member's
 ---------------------------------------------------------
 
 
-프로젝트 진행도를 표시한 문서 :
+프로젝트 진행도를 표시한 문서 
+.docx file to show progress of project
+:
 https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
 
 
