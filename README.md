@@ -1,4 +1,4 @@
-# 빠나나_저장소 <br></br>banana_storage
+# 빠나나_저장소, banana_storage
 
 **스토리지의 용도**
 
@@ -24,7 +24,7 @@ Automatic flowerpot for growing plant
 When the user decides the desired plant condition, it will maintain that.
 <br> </br>
 <br> </br>
-![2021졸업작품집_포스터_30](https://user-images.githubusercontent.com/57119957/120282538-2c3e7980-c2f5-11eb-9d8a-7dbf1864cd4a.jpg)
+![2021졸업작품집_포스터_30](https://user-images.githubusercontent.com/57119957/120282538-2c3e7980-c2f5-11eb-9d8a-7dbf1864cd4a.jpg){: width="430" height="590"}
 -----------------------------------------------------------
 
 **프로젝트 참여자 목록**
