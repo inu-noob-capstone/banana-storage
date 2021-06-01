@@ -1,6 +1,6 @@
 # banana_storage (빠나나_저장소)
 
-**스토리지의 용도**
+### 스토리지의 용도
 
 **What is This? - Objective of this Storage**
 <br> </br>
@@ -14,7 +14,7 @@ From 2020 fall To 2021 summer, We have a small project for graduating
 This storage is made for that.
 
 -----------------------------------------------------------
-**프로젝트 명 : Leave Me Alone**
+### 프로젝트 명 : Leave Me Alone
 
 **Project Name : Leave Me Alone**
 <br></br>
@@ -31,8 +31,13 @@ When the user decides the desired plant condition, it will maintain that.
 <img src="https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EB%B0%8F%20%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EC%A0%9C%EC%9E%91%EC%9A%A9%20%EC%9D%B4%EB%AF%B8%EC%A7%80/2021%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88%EC%A7%91_%ED%8F%AC%EC%8A%A4%ED%84%B0_30.jpg" width=430 height="590">
 
 -------------------------------------------------------------------------------
+### 소개 영상
+**Introduction Video**
+<br></br>
+[![[포스터30] Leave Me Alone](https://youtu.be/XAXe4J__5RA/vi/XAXe4J__5RA/0.jpg)](https://youtu.be/XAXe4J__5RA?t=0s)
+-------------------------------------------------------------------------------
 
-**프로젝트 참여자 목록**
+### 프로젝트 참여자 목록
 **List of participants**
 <br></br>
 
@@ -51,7 +56,7 @@ Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won
 Ex-members quit at Februray, 2021     
 
 ---------------------------------------------------------
-**멤버들의 이메일, GitHub 유저 네임**
+### 멤버들의 이메일, GitHub 유저 네임
 
 **Mail address and GitHub username of each one.**
 <br></br>
@@ -81,10 +86,19 @@ Ex-Member's
 ---------------------------------------------------------
 
 
-**프로젝트 진행도를 표시한 문서**
+### 프로젝트 진행도를 표시한 문서
 
 **.docx file to show progress of project**
+<br></br>
 
+구현율 약 80%.
+<br></br>
+자세한 것은 문서 참조
+<br></br>
+Implementation : 80%.
+<br></br>
+Please refer to the .docx file for details.
+<br></br>
 :
 https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
 
