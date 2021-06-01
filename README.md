@@ -34,8 +34,10 @@ When the user decides the desired plant condition, it will maintain that.
 ### 소개 영상
 **Introduction Video**
 <br></br>
+
 [![Leave Me Alnoe 영상](http://img.youtube.com/vi/XAXe4J__5RA/0.jpg)](https://youtu.be/XAXe4J__5RA?t=0s)
--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
 
 ### 프로젝트 참여자 목록
 **List of participants**
