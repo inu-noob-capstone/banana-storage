@@ -8,20 +8,17 @@ We are CE students of INU(Incheon National University).
 -----------------------------------------------------------
 
 프로젝트 참여자 목록
-
-
+<br></br>
 
 현 멤버 : 권민수, 김도균 
 
 Members : Kwon Min Soo, Kim Do Gyun.                ~~+Coding Monkeys~~
-
-
+<br></br>
 
 구 멤버 : 윤종화, 이림, 최재원 
 
 Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won  
-
-
+<br></br>
 
 구 멤버들은 프로젝트 진행 중 2021년 2월 경에 탈퇴하였다.
 
@@ -31,14 +28,12 @@ Ex-members quit at Februray, 2021
 멤버들의 이메일, GitHub 유저 네임
 
 Mail address and username of each one.
-
-
+<br></br>
 
 현 멤버들 것
 
 Current Member's 
-
-
+<br></br>
 
 권민수, Kwon Min Soo : rkrnru@naver.com, rkrnru
 
@@ -48,10 +43,10 @@ Current Member's
 ---------------------------------------------------------
 
 구 멤버들 것
+<br></br>
 
 Ex-Member's
-
-
+<br></br>
 
 윤종화, Yoon Jong Hwa : whdghk2gh@naver.com, whdghk1gh
 
