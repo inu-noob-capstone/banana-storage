@@ -26,7 +26,7 @@ Members : Kwon Min Soo, Kim Do Gyun.                ~~+Coding Monkeys~~
 구 멤버 : 윤종화, 이림, 최재원 
 
 Ex-Members : Yoon Jong Hwa, Li Lim, Choi Jae won  
-<br></br>
+<br>
 
 구 멤버들은 프로젝트 진행 중 2021년 2월 경에 탈퇴하였다.
 
@@ -47,8 +47,6 @@ Current Member's
 
 김도균, Kim Do Gyun : rlaehrbs98@naver.com, 5verlord 
 
-
----------------------------------------------------------
 
 구 멤버들 것
 
