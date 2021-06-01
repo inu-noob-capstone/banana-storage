@@ -1,4 +1,5 @@
-# 빠나나_저장소, banana_storage
+# 빠나나_저장소
+# banana_storage
 
 **스토리지의 용도**
 
