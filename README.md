@@ -34,7 +34,7 @@ When the user decides the desired plant condition, it will maintain that.
 ### 소개 영상
 **Introduction Video**
 <br></br>
-[![[포스터30] Leave Me Alone](https://www.youtube.com/vi/XAXe4J__5RA/0.jpg)](https://youtu.be/XAXe4J__5RA?t=0s)
+<img width="400" alt="발표 영상 표지" src="https://user-images.githubusercontent.com/57119957/120290362-3ebcb100-c2fd-11eb-9af5-762ad47f4291.png">
 -------------------------------------------------------------------------------
 
 ### 프로젝트 참여자 목록
