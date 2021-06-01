@@ -2,14 +2,14 @@
 
 ### 스토리지의 용도
 
-**What is This? - Objective of this Storage**
+**What is This? - Purpose of this Storage**
 <br> </br>
 
-2020년 가을부터 2021년 여름까지, 인천대 컴공 학생들이 졸업용 프로젝트를 위해 만든 저장소입니다.
+2020년 9월부터 2021년 5월까지, 인천대 컴공 학생들이 졸업용 프로젝트를 위해 만든 저장소입니다.
 
 We are CE students of INU(Incheon National University).
 
-From 2020 fall To 2021 summer, We have a small project for graduating
+From September, 2020 To May, 2021, We have a small project for graduating.
 
 This storage is made for that.
 
