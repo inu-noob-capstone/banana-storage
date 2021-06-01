@@ -24,7 +24,7 @@ Automatic flowerpot for growing plant
 When the user decides the desired plant condition, it will maintain that.
 <br> </br>
 <br> </br>
-![2021졸업작품집_포스터_30](https://user-images.githubusercontent.com/57119957/120282538-2c3e7980-c2f5-11eb-9d8a-7dbf1864cd4a.jpg){: width="430px" height="590px"}
+<img src="https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EB%B0%8F%20%ED%8F%AC%EC%8A%A4%ED%84%B0%20%EC%A0%9C%EC%9E%91%EC%9A%A9%20%EC%9D%B4%EB%AF%B8%EC%A7%80/2021%EC%A1%B8%EC%97%85%EC%9E%91%ED%92%88%EC%A7%91_%ED%8F%AC%EC%8A%A4%ED%84%B0_30.jpg" width=430 height="590">
 -----------------------------------------------------------
 
 **프로젝트 참여자 목록**
