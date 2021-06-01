@@ -47,7 +47,7 @@ Current Member's
 
 김도균, Kim Do Gyun : rlaehrbs98@naver.com, 5verlord 
 
-</br></br>
+</br>
 
 구 멤버들 것
 
