@@ -58,7 +58,9 @@ Ex-Member's
 
 
 프로젝트 진행도를 표시한 문서 
+
 .docx file to show progress of project
+
 :
 https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
 
