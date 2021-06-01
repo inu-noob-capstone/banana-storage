@@ -43,9 +43,9 @@ Ex-members quit at Februray, 2021
 Current Member's 
 <br></br>
 
-권민수, Kwon Min Soo : rkrnru@naver.com, rkrnru
+권민수, Kwon Min Soo : rkrnru@naver.com, rkrnru (https://github.com/rkrnru)
 
-김도균, Kim Do Gyun : rlaehrbs98@naver.com, 5verlord 
+김도균, Kim Do Gyun : rlaehrbs98@naver.com, 5verlord (https://github.com/5verlord)
 
 </br>
 
