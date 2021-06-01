@@ -13,6 +13,16 @@ From 2020 fall To 2021 summer, We have a small project for graduating
 This storage is made for that.
 
 -----------------------------------------------------------
+**프로젝트 명 : Leave Me Alone**
+**Project Name : Leave Me Alone**
+
+반려식물을 기르는 용도의 자동화 화분
+사용자가 원하는 식물 상태를 정하면 이를 유지한다.
+<br>
+Automatic flowerpot for growing plant
+When the user decides the desired plant condition, it will maintain that.
+
+-----------------------------------------------------------
 
 **프로젝트 참여자 목록**
 **List of participants**
