@@ -1,30 +1,15 @@
 package com.example.leavemealoneapplication
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.JsonToken
 import android.util.Log
-import androidx.annotation.IdRes
 import com.example.leavemealoneapplication.databinding.ActivityLightManagementBinding
-import com.example.leavemealoneapplication.databinding.ActivityMainBinding
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import kotlinx.coroutines.*
-import nl.bryanderidder.themedtogglebuttongroup.ThemedButton
-import nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
-import retrofit2.Retrofit
-import retrofit2.create
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
-import kotlin.text.Typography.less
 
 class LightManagement : AppCompatActivity() {
     val binding by lazy { ActivityLightManagementBinding.inflate(layoutInflater) }
@@ -132,143 +117,37 @@ class LightManagement : AppCompatActivity() {
                 Log.d("lightUpdate", "allowingOfAUser : false")
             }
 
-            // 아래부턴 goalLux 데이터 전송
+            // 아래부터는 goalLux와 chlorophyll, allowingOfAUser 데이터 전송
 
-            while(true) {
+            var check = true
+
+            while(check) {
 
                 var goalLux = sharedLight.getString("goalLux", "0")
+                var chlorophyll = sharedLight.getString("chlorophyll", "A")
+                var allowingOfAUser = sharedLight.getString("allowingOfAUser", "true")
 
-                var lightUrlText = "http://192.168.219.110:8081/?goalLux=" + "${goalLux}"
+                var lightUrlText = "http://192.168.219.110/cgi-bin/light.py?goalLux=" +
+                        "${goalLux}" + "&chlorophyll=" + "${chlorophyll}" + "&allowingOfAUser=" +
+                        "${allowingOfAUser}"
+
                 var lightUrl = URL(lightUrlText)
 
                 var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
                 lightUrlConnection.requestMethod = "GET"
                 lightUrlConnection.setRequestProperty(
                     "Content-Type",
-                    "application/json; charset=UTF-8"
+                    "text/plain"
                 )
 
                 CoroutineScope(Dispatchers.IO).launch {
                     if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-
-                        CoroutineScope(Dispatchers.IO).launch {
-                            var lightInputStream = lightUrlConnection.getInputStream()
-                            var lightBuffered =
-                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                            var lightContent = lightBuffered.readText()
-
-                            while (true) {
-                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
-                                    break
-                                } else {
-                                    lightUrlConnection.disconnect()
-                                    lightBuffered.close()
-
-                                    lightInputStream = lightUrlConnection.getInputStream()
-                                    lightBuffered =
-                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                                    lightContent = lightBuffered.readText()
-                                }
-                            }
-                        } // 코루틴 블록 1 종료.
+                        Log.d("Response2","goalLux & chlorophyll & allowingOfAUser HTTP_OK")
 
                     } // ResponseCode를 확인하는 if문 블록 끝.
-                } // 코루틴 블록 2 종료.
+                } // 코루틴 블록 종료.
                 break
-
             } // while(true) 블록 종료
-
-            // 아래부터 엽록소 데이터 전송
-
-            while (true) {
-
-                var chlorophyll = sharedLight.getString("chlorophyll", "A")
-
-                var lightUrlText = "http://192.168.219.110:8081/?chlorophyll=" + "${chlorophyll}"
-                var lightUrl = URL(lightUrlText)
-
-                var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
-                lightUrlConnection.requestMethod = "GET"
-                lightUrlConnection.setRequestProperty(
-                    "Content-Type",
-                    "application/json; charset=UTF-8"
-                )
-
-                CoroutineScope(Dispatchers.IO).launch {
-                    if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-
-                        CoroutineScope(Dispatchers.IO).launch {
-                            var lightInputStream = lightUrlConnection.getInputStream()
-                            var lightBuffered =
-                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                            var lightContent = lightBuffered.readText()
-
-                            while (true) {
-                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
-                                    break
-                                } else {
-                                    lightUrlConnection.disconnect()
-                                    lightBuffered.close()
-
-                                    lightInputStream = lightUrlConnection.getInputStream()
-                                    lightBuffered =
-                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                                    lightContent = lightBuffered.readText()
-                                }
-                            }
-                        } // 코루틴 블록 1 종료.
-
-                    } // responseCode 확인하는 if문 블록 끝.
-                } // 코루틴 블록 2 종료.
-                break
-
-            } // while(true) 블록 종료
-
-            // 아래부터 allowingOfAUser(전구 강제로 끄기) 데이터 전송
-
-            while (true) {
-
-                var allowingOfLight = sharedLight.getString("allowingOfAUser", "true")
-
-                var lightUrlText =
-                    "http://192.168.219.110:8081/?allowingOfLight=" + "${allowingOfLight}"
-                var lightUrl = URL(lightUrlText)
-
-                var lightUrlConnection = lightUrl.openConnection() as HttpURLConnection
-                lightUrlConnection.requestMethod = "GET"
-                lightUrlConnection.setRequestProperty(
-                    "Content-Type",
-                    "application/json; charset=UTF-8"
-                )
-
-                CoroutineScope(Dispatchers.IO).launch {
-                    if (lightUrlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-
-                        CoroutineScope(Dispatchers.IO).launch {
-                            var lightInputStream = lightUrlConnection.getInputStream()
-                            var lightBuffered =
-                                BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                            var lightContent = lightBuffered.readText()
-
-                            while (true) {
-                                if ((lightContent != null) && (lightContent.isNotEmpty())) {
-                                    break
-                                } else {
-                                    lightUrlConnection.disconnect()
-                                    lightBuffered.close()
-
-                                    lightInputStream = lightUrlConnection.getInputStream()
-                                    lightBuffered =
-                                        BufferedReader(InputStreamReader(lightInputStream, "UTF-8"))
-                                    lightContent = lightBuffered.readText()
-                                }
-                            }
-                        } // 코루틴 블록 종료 1.
-
-                    } // responseCode를 확인하는 if문 블록 끝
-                } // 코루틴 블록 종료 2.
-                break
-            } // while(true) 블록 종료.
 
             finish() // 현 액티비티 종료
 

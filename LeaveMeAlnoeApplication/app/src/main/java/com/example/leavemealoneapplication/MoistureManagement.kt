@@ -92,107 +92,35 @@ class MoistureManagement : AppCompatActivity() {
                     Log.d("waterUpdate","allowingOfAUser : false")
                 }
 
-                // 아래부터는 humThreshold 데이터 전송
+                // 아래부터는 humThreshold와 allowingOfAUser 데이터 전송
 
                 while(true) {
 
                     var humThreshold = sharedWater.getString("humThreshold", "0")
+                    var allowingOfAUser = sharedWater.getString("allowingOfAUser", "true")
 
                     var waterUrlText =
-                        "http://192.168.219.110:8081/?humThreshold=" + "${humThreshold}"
+                        "http://192.168.219.110/cgi-bin/water.py?humThreshold=" + "${humThreshold}" +
+                                "&allowingOfAUser=" + "${allowingOfAUser}"
+
                     var waterUrl = URL(waterUrlText)
 
                     var waterURLConnection = waterUrl.openConnection() as HttpURLConnection
                     waterURLConnection.requestMethod = "GET"
                     waterURLConnection.setRequestProperty(
                         "Content-Type",
-                        "application/json; charset=UTF-8"
+                        "text/plain"
                     )
 
                     CoroutineScope(Dispatchers.IO).launch {
                         if (waterURLConnection.responseCode == HttpURLConnection.HTTP_OK) {
-
-                            CoroutineScope(Dispatchers.IO).launch {
-                                var waterInputStream = waterURLConnection.getInputStream()
-                                var waterBuffered =
-                                    BufferedReader(InputStreamReader(waterInputStream, "UTF-8"))
-                                var waterContent = waterBuffered.readText()
-
-                                while (true) {
-                                    if ((waterContent != null) && (waterContent.length != 0)) {
-                                        break
-                                    } else {
-                                        waterURLConnection.disconnect()
-                                        waterBuffered.close()
-
-                                        waterInputStream = waterURLConnection.inputStream
-                                        waterBuffered =
-                                            BufferedReader(
-                                                InputStreamReader(
-                                                    waterInputStream,
-                                                    "UTF-8"
-                                                )
-                                            )
-                                        waterContent = waterBuffered.readText()
-                                    }
-                                }
-                            }// 코루틴 블록 끝.
-
-                        } // ResponseCode 확인하는 if문 블록 끝.
-                    } //코루틴 블록 종료 2
-                    break
-
-                }// while(true) 블록 종료
-
-                //아래는 allowingOfPump (펌프 강제로 멈추기) 데이터 전송
-
-                while(true) {
-
-                    var allowingOfPump = sharedWater.getString("allowingOfAUser", "true")
-
-                    var waterUrlText =
-                        "http://192.168.219.110:8081/?allowingOfPump=" + "${allowingOfPump}"
-                    var waterUrl = URL(waterUrlText)
-
-                    var waterURLConnection = waterUrl.openConnection() as HttpURLConnection
-                    waterURLConnection.requestMethod = "GET"
-                    waterURLConnection.setRequestProperty("Content-Type",
-                        "application/json; charset=UTF-8")
-
-                    CoroutineScope(Dispatchers.IO).launch {
-                        if (waterURLConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                            CoroutineScope(Dispatchers.IO).launch {
-                                var waterInputStream = waterURLConnection.inputStream
-                                var waterBuffered =
-                                    BufferedReader(InputStreamReader(waterInputStream, "UTF-8"))
-                                var waterContent = waterBuffered.readText()
-
-                                while (true) {
-                                    if ((waterContent != null) && (waterContent.length != 0))
-                                        break
-                                    else {
-                                        waterURLConnection.disconnect()
-                                        waterBuffered.close()
-
-                                        waterInputStream = waterURLConnection.inputStream
-                                        waterBuffered =
-                                            BufferedReader(
-                                                InputStreamReader(
-                                                    waterInputStream,
-                                                    "UTF-8"
-                                                )
-                                            )
-                                        waterContent = waterBuffered.readText()
-                                    }
-                                }
-                            } // 코루틴 블록 종료
-
-                        }// ResponseCode를 확인하는 if문 블록 끝
-                    } // 코루틴 블록 종료2
+                            Log.d("Response1","HumThreshold & allowingOfAUser HTTP_OK")
+                        }
+                    }
                     break
                 }// while(true) 블록 종료
 
-                finish()
+                finish() // 현 액티비티 종료
 
             } // saveSetting 버튼 OnClickListener 블록 끝
 
