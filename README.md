@@ -93,16 +93,16 @@ Ex-Member's
 **.docx file to show progress of project**
 <br></br>
 
-구현율 약 80%.
+구현율 약 100%.
 <br></br>
 자세한 것은 문서 참조
 <br></br>
-Implementation : 80%.
+Implementation : 100%.
 <br></br>
 Please refer to the .docx file for details.
 <br></br>
 :
-https://github.com/inu-noob-capstone/banana-storage/blob/55d59f34eff266ea9ac0a0a9e25155d1123d2770/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84.docx
+https://github.com/inu-noob-capstone/banana-storage/blob/master/21%EB%85%84%201%ED%95%99%EA%B8%B0%20%EC%84%9C%EB%A5%98/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A7%84%ED%96%89%EB%8F%84%20-%20%EB%B0%9C%ED%91%9C%20%EC%9D%B4%ED%9B%84%20%EC%B6%94%EA%B0%80%20%EC%88%98%EC%A0%95.docx
 
 
 ----------------------------------------------------------
