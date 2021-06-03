@@ -15,7 +15,8 @@ This storage is made for that.
 <br></br>
 
 개발언어 : Android (Kotlin), Raspberry Pi Control (Python). <br></br>
-Programming Languages : Android (Kotlin), Raspberry Pi Control (Python). <br></br><br></br>
+Programming Languages : Android (Kotlin), Raspberry Pi Control (Python). <br></br>
+
 2021년도 인천대학교 컴퓨터공학부 졸업작품발표회 장려상 수상. <br></br>
 Participation prize from INU CSE Capstone Design in 2021.  
 
