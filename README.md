@@ -12,6 +12,12 @@ We are CE students of INU(Incheon National University).
 From September, 2020 To May, 2021, We have a small project for graduating.
 
 This storage is made for that.
+<br></br>
+
+개발언어 : Android (Kotlin), Raspberry Pi Control (Python). <br></br>
+Programming Languages : Android (Kotlin), Raspberry Pi Control (Python). <br></br><br></br>
+2021년도 인천대학교 컴퓨터공학부 졸업작품발표회 장려상 수상. <br></br>
+Participation prize from INU CSE Capstone Design in 2021.  
 
 -----------------------------------------------------------
 ### 프로젝트 명 : Leave Me Alone
@@ -43,9 +49,14 @@ When the user decides the desired plant condition, it will maintain that.
 **List of participants**
 <br></br>
 
+팀 이름 : 코드몽키
+<br></br>
+Team Name : Code Monkeys
+<br></br>
+
 현 멤버 : 권민수, 김도균 
 
-Members : Kwon Min Soo, Kim Do Gyun.                ~~+Coding Monkeys~~
+Current Members : Kwon Min Soo, Kim Do Gyun.              ~~+Coding Monkeys~~
 <br></br>
 
 구 멤버 : 윤종화, 이림, 최재원 
